@@ -25,7 +25,7 @@
 #include <string.h>
 #include "pico/stdio.h"
 #include "include/scale.h"
-//#include "extern/hx711-pico-c/src/hx711_noblock.pio"
+#include "extern/hx711-pico-c/include/hx711_noblock.pio.h"
 
 int main(void) {
 
@@ -38,7 +38,7 @@ int main(void) {
     const uint datPin = 15; // GP15, PAD20
 
     // CALIBRATE YOUR SCALE TO OBTAIN THESE VALUES
-    // https://github.com/endail/hx711-pico-c#how-to-calibrate
+    // https://github.com/endail/pico-scale#how-to-calibrate
     const mass_unit_t unit = mass_g;
     const int32_t refUnit = 432;
     const int32_t offset = -367539;
@@ -57,10 +57,8 @@ int main(void) {
         clkPin,
         datPin,
         pio0,
-        NULL,
-        NULL);
-//        &hx711_noblock_program,
-//        &hx711_noblock_program_init);
+        &hx711_noblock_program,
+        &hx711_noblock_program_init);
 
     //2. power up the hx711
     hx711_set_power(&hx, hx711_pwr_up);

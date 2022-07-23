@@ -4,6 +4,7 @@
 
 # custom
 build/**
+extern/**
 
 
 ### C ###

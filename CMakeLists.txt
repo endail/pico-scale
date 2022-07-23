@@ -20,25 +20,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_PROCESSOR arm)
-#set(CMAKE_EXE_LINKER_FLAGS "--specs=nosys.specs" CACHE INTERNAL "")
-
 cmake_minimum_required(VERSION 3.12)
 
-set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
-
+# ===================== INCLUDE PICO SDK =====================
+# ================= MUST BE ABOVE PROJECT()! =================
 include(pico_sdk_import.cmake)
-
-project(pico-scale C CXX ASM)
-set(CMAKE_C_STANDARD 11)
-
 if (PICO_SDK_VERSION_STRING VERSION_LESS "1.3.0")
     message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.3.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
+# ============================================================
 
+project(pico-scale
+        VERSION 0.0.1
+        DESCRIPTION "Example use of hx711-pico-c library as a scale application"
+        HOMEPAGE_URL "https://github.com/endail/pico-scale"
+        LANGUAGES C CXX ASM
+        )
+
+# ====================== INIT PICO SDK =======================
+# ================= MUST BE BELOW PROJECT()! =================
 pico_sdk_init()
+# ============================================================
 
+# include hx711 lib
 add_subdirectory(extern/hx711-pico-c)
 
 add_compile_options(
@@ -55,12 +59,11 @@ add_compile_options(
         -Wno-array-bounds               # rp2040_usb.c:61:3
         )
 
-# main/example program config
 add_executable(main
-        ${CMAKE_CURRENT_LIST_DIR}/main.c
-        ${CMAKE_CURRENT_LIST_DIR}/src/mass.c
-        ${CMAKE_CURRENT_LIST_DIR}/src/scale.c
-        ${CMAKE_CURRENT_LIST_DIR}/src/util.c
+        main.c
+        src/mass.c
+        src/scale.c
+        src/util.c
         )
 
 target_link_libraries(main
@@ -75,4 +78,3 @@ pico_add_extra_outputs(main)
 
 pico_enable_stdio_usb(main 1)
 pico_enable_stdio_uart(main 1)
-

@@ -1,10 +1,11 @@
-# hx711-pico-c
+# pico-scale
 
-This is my implementation of reading from a HX711 via a Raspberry Pi Pico. It uses the RP2040's PIO feature to be as efficient as possible.
+A scale application for a Raspberry Pi Pico using the [hx711-pico-c library](https://github.com/endail/hx711-pico-c).
 
 ## Clone Repository
 ```console
-git clone https://github.com/endail/hx711-pico-c
+git clone https://github.com/endail/pico-scale
+git submodule update --init
 ```
 
 After building, copy `main.uf2` in the build directory to the Raspberry Pi Pico and then open up a serial connection to the Pico at a baud rate of 115200.
@@ -15,73 +16,9 @@ I have used [this helpful tutorial](https://paulbupejr.com/raspberry-pi-pico-win
 
 The .gif above illustrates the [current example code](main.c) obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.
 
-You do not need to use or `#include` the scale functionality if you only want to use the HX711 functions.
-
-## How to Use HX711
-
-1. Initialise the HX711
-
-See [here](https://learn.adafruit.com/assets/99339) for a pinout to choose GPIO pins.
-
-```c
-#include "include/hx711.h"
-#include "hx711_noblock.pio.h" // for hx711_noblock_program and hx711_noblock_program_init
-
-hx711_t hx;
-
-hx711_init(
-    &hx,
-    clkPin, // GPIO pin
-    datPin, // GPIO pin
-    pio0, // the RP2040 PIO to use
-    &hx711_noblock_program, // the state machine program
-    &hx711_noblock_program_init); // the state machine program init function
-```
-
-2. Power up
-
-```c
-hx711_set_power(&hx, hx711_pwr_up);
-```
-
-3. Set gain
-
-```c
-hx711_set_gain(&hx, hx711_gain_128);
-```
-
-4. Wait for readings to settle
-
-```c
-hx711_wait_settle(hx711_rate_10); // or hx711_rate_80 depending on your chip's config
-```
-
-5. Read values
-
-```c
-int32_t val;
-
-// block until a value is read
-val = hx711_get_value(&hx);
-
-// or use a timeout
-// #include "pico/time.h" to use make_timeout_time_ms and make_timeout_time_us functions
-absolute_time_t timeout = make_timeout_time_ms(250);
-
-bool ok = hx711_get_value_timeout(
-    &hx,
-    &timeout,
-    &val);
-
-if(ok) {
-    // value was obtained within the timeout period
-    printf("%li\n", val);
-}
-```
-
 ## How to Use Scale
 
-1. Initialise the HX711 as described above from steps 1 - 4
+1. Initialise the HX711. For details on how to do this, see [here](https://github.com/endail/hx711-pico-c).
 
 2. Initialise the scale.
 
@@ -98,7 +35,7 @@ int32_t offset = -367539;
 
 scale_init(
     &sc,
-    &hx,
+    &hx, // pass a pointer to the hx711_t
     scaleUnit,
     refUnit,
     offset);
