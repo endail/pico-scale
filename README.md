@@ -16,7 +16,7 @@ I have used [this helpful tutorial](https://paulbupejr.com/raspberry-pi-pico-win
 
 The .gif above illustrates the [current example code](main.c) obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.
 
-## How to Use Scale
+## How to Use
 
 1. Initialise the HX711. For details on how to do this, see [here](https://github.com/endail/hx711-pico-c).
 
