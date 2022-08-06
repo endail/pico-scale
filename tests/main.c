@@ -24,8 +24,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "pico/stdio.h"
-#include "include/scale.h"
-#include "extern/hx711-pico-c/include/hx711_noblock.pio.h"
+#include "../include/scale.h"
+#include "../extern/hx711-pico-c/include/hx711_noblock.pio.h"
 
 int main(void) {
 
