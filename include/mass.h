@@ -172,7 +172,7 @@ static inline bool mass_div(
         assert(res != NULL);
 
         //if ~0; protect against div / 0
-        if(fabs(lhs->ug) < DBL_EPSILON) {
+        if(fabs(rhs->ug) < DBL_EPSILON) {
             return false;
         }
 

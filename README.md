@@ -144,3 +144,87 @@ else {
 3. Copy `calibration.uf2` in the build directory to the Raspberry Pi Pico.
 
 4. Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.
+
+## FAQ
+
+Q: __"Which mass units are supported?"__
+A: The following `mass_unit_t`s are available.
+
+- `mass_ug`: micrograms
+- `mass_mg`: milligrams
+- `mass_g`: grams
+- `mass_kg`: kilograms
+- `mass_ton`: metric tons
+- `mass_imp_ton`: imperial tons
+- `mass_us_ton`: US tons
+- `mass_st`: stones
+- `mass_lb`: pounds
+- `mass_oz`: ounces
+
+Q: __"How do I get the weight in pounds/ounces/tons/etc...?"__
+A: You can either: set the `scale_t` or change the `mass_t`.
+
+```c
+// 1. setting the scale_t
+
+// when you initialise the scale
+scale_init(
+    &sc,
+    &hx,
+    mass_imp_ton, //change the scaleUnit to your chosen mass_unit_t
+    refUnit,
+    offset);
+
+// or, if you've already initialised the scale
+sc.unit = mass_imp_ton;
+
+
+// 2. change the mass_t
+
+// if, for whatever reason, you are initialising a mass_t
+mass_init(
+    &m,
+    mass_lb, //your desired mass_unit_t
+    val);
+
+// or, if you've already initialised a mass_t
+m.unit = mass_lb;
+```
+
+Q: __"How do I perform math on the weights?"__
+A: You can either: get the underlying value and operate on that, or use the in-built functions to operate on two `mass_t` structs.
+
+```c
+// 1. get the underlying value
+double val;
+mass_get_value(&m, &val);
+
+if(val >= 10.5) {
+    //do something if val is greater than or equal to 10.5
+}
+
+//2. built-in functions
+if(mass_gteq(&m1, &m2)) {
+    //do something if m1 is greater than m2
+}
+```
+
+The advantage of using the built-in functions is that the `mass_t` structs can be of different units. So you can check if, for example, `m1` is greater than or equal to `m2`, even if `m1` is is in pounds and `m2` is in kilograms.
+
+Q: __"Which math functions are available?"__
+A:
+
+- `mass_add(mass_t* lhs, mass_t* rhs, mass_t* res)`: add `lhs` and `rhs` and store result in `res`
+- `mass_sub(mass_t* lhs, mass_t* rhs, mass_t* res)`: subtract `rhs` from `lhs` and store result in `res`
+- `mass_mul(mass_t* lhs, mass_t* rhs, mass_t* res)`: multiply `lhs` and `rhs` and store result in `res`
+- `mass_div(mass_t* lhs, mass_t* rhs, mass_t* res)`: divide `lhs` by `rhs` and store result in `res`, returns false if `rhs` is 0
+- `mass_addeq(mass_t* self, mass_t* rhs)`: add `rhs` to `self`
+- `mass_subeq(mass_t* self, mass_t* rhs)`: subtract `rhs` from `self`
+- `mass_muleq(mass_t* self, mass_t* rhs)`: multiply `self` by `rhs`
+- `mass_diveq(mass_t* self, mass_t* rhs)`: divide `self` by `rhs`, returns false if `rhs` is 0
+- `mass_eq(mass_t* lhs, mass_t* rhs)`: return true if `lhs` equals `rhs`
+- `mass_neq(mass_t* lhs, mass_t* rhs)`: return true if `lhs` does not equal `rhs`
+- `mass_lt(mass_t* lhs, mass_t* rhs)`: return true if `lhs` is less than `rhs`
+- `mass_gt(mass_t* lhs, mass_t* rhs)`: return true if `lhs` is greater than `rhs`
+- `mass_lteq(mass_t* lhs, mass_t* rhs)`: return true if `lhs` is less than or equal to `rhs`
+- `mass_gteq(mass_t* lhs, mass_t* rhs)`: return true if `lhs` is greater than or equal to `rhs`
