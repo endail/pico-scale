@@ -201,13 +201,86 @@ How to Calibrate</h1>
 <li>Modify <a href="calibration.c#L68-L75">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
 <li>Build.</li>
 <li>Copy <code>calibration.uf2</code> in the build directory to the Raspberry Pi Pico.</li>
-<li>Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts. </li>
+<li>Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.</li>
 </ol>
+<h1><a class="anchor" id="autotoc_md8"></a>
+FAQ</h1>
+<p>Q: __"Which mass units are supported?"__ A: The following <code>mass_unit_t</code>s are available.</p>
+<ul>
+<li><code>mass_ug</code>: micrograms</li>
+<li><code>mass_mg</code>: milligrams</li>
+<li><code>mass_g</code>: grams</li>
+<li><code>mass_kg</code>: kilograms</li>
+<li><code>mass_ton</code>: metric tons</li>
+<li><code>mass_imp_ton</code>: imperial tons</li>
+<li><code>mass_us_ton</code>: US tons</li>
+<li><code>mass_st</code>: stones</li>
+<li><code>mass_lb</code>: pounds</li>
+<li><code>mass_oz</code>: ounces</li>
+</ul>
+<p>Q: __"How do I get the weight in pounds/ounces/tons/etc...?"__ A: You can either: set the <code><a class="el" href="structscale__t.html">scale_t</a></code> or change the <code><a class="el" href="structmass__t.html">mass_t</a></code>.</p>
+<div class="fragment"><div class="line"><span class="comment">// 1. setting the scale_t</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// when you initialise the scale</span></div>
+<div class="line"><a class="code" href="scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4">scale_init</a>(</div>
+<div class="line">    &amp;sc,</div>
+<div class="line">    &amp;hx,</div>
+<div class="line">    <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a0ce798200bf70bb546af204a946c1eca">mass_imp_ton</a>, <span class="comment">//change the scaleUnit to your chosen mass_unit_t</span></div>
+<div class="line">    refUnit,</div>
+<div class="line">    offset);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// or, if you&#39;ve already initialised the scale</span></div>
+<div class="line">sc.<a class="code" href="structscale__t.html#aac67f2643900b076bd2d3c952c4af18b">unit</a> = <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a0ce798200bf70bb546af204a946c1eca">mass_imp_ton</a>;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 2. change the mass_t</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// if, for whatever reason, you are initialising a mass_t</span></div>
+<div class="line"><a class="code" href="mass_8h.html#a2186682b939ae5d70ff7be40f3680fdd">mass_init</a>(</div>
+<div class="line">    &amp;m,</div>
+<div class="line">    <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a7af3a1afe5e8180a1089284d09b1d833">mass_lb</a>, <span class="comment">//your desired mass_unit_t</span></div>
+<div class="line">    val);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// or, if you&#39;ve already initialised a mass_t</span></div>
+<div class="line">m.unit = <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a7af3a1afe5e8180a1089284d09b1d833">mass_lb</a>;</div>
+</div><!-- fragment --><p>Q: __"How do I perform math on the weights?"__ A: You can either: get the underlying value and operate on that, or use the in-built functions to operate on two <code><a class="el" href="structmass__t.html">mass_t</a></code> structs.</p>
+<div class="fragment"><div class="line"><span class="comment">// 1. get the underlying value</span></div>
+<div class="line"><span class="keywordtype">double</span> val;</div>
+<div class="line"><a class="code" href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a>(&amp;m, &amp;val);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span>(val &gt;= 10.5) {</div>
+<div class="line">    <span class="comment">//do something if val is greater than or equal to 10.5</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//2. built-in functions</span></div>
+<div class="line"><span class="keywordflow">if</span>(<a class="code" href="mass_8h.html#a956c9022192d8c9984226de018c83c00">mass_gteq</a>(&amp;m1, &amp;m2)) {</div>
+<div class="line">    <span class="comment">//do something if m1 is greater than m2</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>The advantage of using the built-in functions is that the <code><a class="el" href="structmass__t.html">mass_t</a></code> structs can be of different units. So you can check if, for example, <code>m1</code> is greater than or equal to <code>m2</code>, even if <code>m1</code> is is in pounds and <code>m2</code> is in kilograms.</p>
+<p>Q: __"Which math functions are available?"__ A:</p>
+<ul>
+<li><code>mass_add(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: add <code>lhs</code> and <code>rhs</code> and store result in <code>res</code></li>
+<li><code>mass_sub(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: subtract <code>rhs</code> from <code>lhs</code> and store result in <code>res</code></li>
+<li><code>mass_mul(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: multiply <code>lhs</code> and <code>rhs</code> and store result in <code>res</code></li>
+<li><code>mass_div(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: divide <code>lhs</code> by <code>rhs</code> and store result in <code>res</code>, returns false if <code>rhs</code> is 0</li>
+<li><code>mass_addeq(mass_t* self, mass_t* rhs)</code>: add <code>rhs</code> to <code>self</code></li>
+<li><code>mass_subeq(mass_t* self, mass_t* rhs)</code>: subtract <code>rhs</code> from <code>self</code></li>
+<li><code>mass_muleq(mass_t* self, mass_t* rhs)</code>: multiply <code>self</code> by <code>rhs</code></li>
+<li><code>mass_diveq(mass_t* self, mass_t* rhs)</code>: divide <code>self</code> by <code>rhs</code>, returns false if <code>rhs</code> is 0</li>
+<li><code>mass_eq(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> equals <code>rhs</code></li>
+<li><code>mass_neq(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> does not equal <code>rhs</code></li>
+<li><code>mass_lt(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> is less than <code>rhs</code></li>
+<li><code>mass_gt(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> is greater than <code>rhs</code></li>
+<li><code>mass_lteq(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> is less than or equal to <code>rhs</code></li>
+<li><code>mass_gteq(mass_t* lhs, mass_t* rhs)</code>: return true if <code>lhs</code> is greater than or equal to <code>rhs</code> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="amass_8h_html_a2186682b939ae5d70ff7be40f3680fdd"><div class="ttname"><a href="mass_8h.html#a2186682b939ae5d70ff7be40f3680fdd">mass_init</a></div><div class="ttdeci">static void mass_init(mass_t *const m, const mass_unit_t unit, const double val)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00100">mass.h:100</a></div></div>
 <div class="ttc" id="astructscale__options__t_html"><div class="ttname"><a href="structscale__options__t.html">scale_options_t</a></div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00047">scale.h:47</a></div></div>
 <div class="ttc" id="astructmass__t_html"><div class="ttname"><a href="structmass__t.html">mass_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00089">mass.h:89</a></div></div>
+<div class="ttc" id="amass_8h_html_a956c9022192d8c9984226de018c83c00"><div class="ttname"><a href="mass_8h.html#a956c9022192d8c9984226de018c83c00">mass_gteq</a></div><div class="ttdeci">static bool mass_gteq(const mass_t *const lhs, const mass_t *const rhs)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00265">mass.h:265</a></div></div>
 <div class="ttc" id="ascale_8h_html_a2856aa7de7bc3367436768b16c7635d2"><div class="ttname"><a href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a></div><div class="ttdeci">bool scale_zero(scale_t *const sc, const scale_options_t *const opt)</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00231">scale.c:231</a></div></div>
 <div class="ttc" id="amass_8h_html_adcc94737143cdd25beb95b665c04e6c5"><div class="ttname"><a href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a></div><div class="ttdeci">static void mass_get_value(const mass_t *const m, double *const val)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00112">mass.h:112</a></div></div>
 <div class="ttc" id="amass_8h_html_a63594d9cf123405a03d0ab838daa9a27"><div class="ttname"><a href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27">mass_unit_t</a></div><div class="ttdeci">mass_unit_t</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00068">mass.h:68</a></div></div>
@@ -219,10 +292,13 @@ How to Calibrate</h1>
 <div class="ttc" id="ascale_8h_html_a0ee40743499233ab7ded69bc522adcf3"><div class="ttname"><a href="scale_8h.html#a0ee40743499233ab7ded69bc522adcf3">SCALE_DEFAULT_OPTIONS</a></div><div class="ttdeci">static const scale_options_t SCALE_DEFAULT_OPTIONS</div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00054">scale.h:54</a></div></div>
 <div class="ttc" id="amass_8h_html_a367bf5be9ac90d196919b0d5fbf63d93"><div class="ttname"><a href="mass_8h.html#a367bf5be9ac90d196919b0d5fbf63d93">mass_to_string</a></div><div class="ttdeci">int mass_to_string(const mass_t *const m, char *const buff)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8c_source.html#l00026">mass.c:26</a></div></div>
 <div class="ttc" id="ascale_8h_html_ad23bc7d5d57a3c196dffb60866088bb4"><div class="ttname"><a href="scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4">scale_init</a></div><div class="ttdeci">void scale_init(scale_t *const sc, hx711_t *const hx, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset)</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00028">scale.c:28</a></div></div>
+<div class="ttc" id="astructscale__t_html_aac67f2643900b076bd2d3c952c4af18b"><div class="ttname"><a href="structscale__t.html#aac67f2643900b076bd2d3c952c4af18b">scale_t::unit</a></div><div class="ttdeci">mass_unit_t unit</div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00063">scale.h:63</a></div></div>
+<div class="ttc" id="amass_8h_html_a63594d9cf123405a03d0ab838daa9a27a7af3a1afe5e8180a1089284d09b1d833"><div class="ttname"><a href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a7af3a1afe5e8180a1089284d09b1d833">mass_lb</a></div><div class="ttdeci">@ mass_lb</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00077">mass.h:77</a></div></div>
+<div class="ttc" id="amass_8h_html_a63594d9cf123405a03d0ab838daa9a27a0ce798200bf70bb546af204a946c1eca"><div class="ttname"><a href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a0ce798200bf70bb546af204a946c1eca">mass_imp_ton</a></div><div class="ttdeci">@ mass_imp_ton</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00074">mass.h:74</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 14:46:51 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 15:29:40 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

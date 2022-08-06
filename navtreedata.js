@@ -31,6 +31,7 @@ var NAVTREE =
     [ "Initialise the HX711", "index.html#autotoc_md5", null ],
     [ "How to Use the HX711 as a Scale", "index.html#autotoc_md6", null ],
     [ "How to Calibrate", "index.html#autotoc_md7", null ],
+    [ "FAQ", "index.html#autotoc_md8", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
