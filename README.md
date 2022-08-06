@@ -42,6 +42,10 @@ Then, from your own code, `#include` the relevant files as follows and initialis
 
 See the explanation [here](https://github.com/endail/hx711-pico-c#custom-pio-programs) for why you need to manually include the PIO program.
 
+## Documentation
+
+[https://endail.github.io/pico-scale](https://endail.github.io/pico-scale/)
+
 ## Initialise the HX711
 
 You will always need to initialise the HX711 before using it as a scale, so do this first
