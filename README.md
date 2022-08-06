@@ -162,6 +162,7 @@ A: The following `mass_unit_t`s are available.
 - `mass_oz`: ounces
 
 Q: __"How do I get the weight in pounds/ounces/tons/etc...?"__
+
 A: You can either: set the `scale_t` or change the `mass_t`.
 
 ```c
@@ -192,6 +193,7 @@ m.unit = mass_lb;
 ```
 
 Q: __"How do I perform math on the weights?"__
+
 A: You can either: get the underlying value and operate on that, or use the in-built functions to operate on two `mass_t` structs.
 
 ```c
@@ -212,6 +214,7 @@ if(mass_gteq(&m1, &m2)) {
 The advantage of using the built-in functions is that the `mass_t` structs can be of different units. So you can check if, for example, `m1` is greater than or equal to `m2`, even if `m1` is is in pounds and `m2` is in kilograms.
 
 Q: __"Which math functions are available?"__
+
 A:
 
 - `mass_add(mass_t* lhs, mass_t* rhs, mass_t* res)`: add `lhs` and `rhs` and store result in `res`
