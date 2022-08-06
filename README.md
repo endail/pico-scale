@@ -18,9 +18,7 @@ The .gif above illustrates the [current example code](main.c) obtaining data fro
 
 ## How to Use
 
-1. Initialise the HX711. For details on how to do this, see [here](https://github.com/endail/hx711-pico-c).
-
-2. Initialise the scale.
+First, initialise the HX711 (referred to as `hx` in the following code examples). For details on how to do this, see [here](https://github.com/endail/hx711-pico-c).
 
 ```c
 #include "include/scale.h"
@@ -39,11 +37,9 @@ scale_init(
     scaleUnit,
     refUnit,
     offset);
-```
 
-3. Set options for how the scale will read and interpret values
+// 3. Set options for how the scale will read and interpret values
 
-```c
 // SCALE_DEFAULT_OPTIONS will give some default settings which you
 // do not have to use
 scale_options_t opt = SCALE_DEFAULT_OPTIONS;
@@ -71,22 +67,17 @@ scale_options_t opt = SCALE_DEFAULT_OPTIONS;
 //
 // These options mean... collect as many samples as possible within 250ms
 // and then use the average of all those samples.
-```
 
-4. Zero the scale (OPTIONAL) (aka. tare)
+// 4. Zero the scale (OPTIONAL) (aka. tare)
 
-```c
 if(scale_zero(&sc, &opt)) {
     printf("Scale zeroed successfully\n");
 }
 else {
     printf("Scale failed to zero\n");
 }
-```
 
-5. Obtain the weight
-
-```c
+// 5. Obtain the weight
 mass_t mass;
 
 if(scale_weight(&sc, &mass, &opt)) {
