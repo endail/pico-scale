@@ -212,7 +212,7 @@ if(mass_gteq(&m1, &m2)) {
 }
 ```
 
-The advantage of using the built-in functions is that the `mass_t` structs can be of different units. So you can check if, for example, `m1` is greater than or equal to `m2`, even if `m1` is is in pounds and `m2` is in kilograms.
+The advantage of using the built-in functions is that the `mass_t` structs can be of different units. So you can check if, for example, `m1` is greater than or equal to `m2`, even if `m1` is is in pounds and `m2` is in kilograms. The conversion is taken care of.
 
 Q: __"Which math functions are available?"__
 
