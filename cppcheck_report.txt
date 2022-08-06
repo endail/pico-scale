@@ -1,24 +1,3 @@
-calibration.c:159:5: portability: %u in format string (no. 3) requires 'unsigned int' but the argument type is 'size_t {aka unsigned long}'. [invalidPrintfArgType_uint]
-    printf("\
-    ^
-calibration.c:159:5: warning: %li in format string (no. 4) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-calibration.c:159:5: warning: %li in format string (no. 5) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-calibration.c:159:5: warning: %li in format string (no. 6) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-calibration.c:159:5: warning: %li in format string (no. 7) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-calibration.c:159:5: warning: %li in format string (no. 8) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-calibration.c:35:9: style: The scope of the variable 'c' can be reduced. [variableScope]
-    int c;
-        ^
 src/scale.c:81:19: warning: The address of local variable 'arr' might be accessed at non-zero index. [objectIndex]
             (*arr)[i] = hx711_get_value(sc->_hx);
                   ^
@@ -34,5 +13,26 @@ src/scale.c:75:51: note: Assuming condition is Assuming condition is false
 src/scale.c:81:19: note: The address of local variable 'arr' might be accessed at non-zero index.
             (*arr)[i] = hx711_get_value(sc->_hx);
                   ^
+tests/calibration.c:159:5: portability: %u in format string (no. 3) requires 'unsigned int' but the argument type is 'size_t {aka unsigned long}'. [invalidPrintfArgType_uint]
+    printf("\
+    ^
+tests/calibration.c:159:5: warning: %li in format string (no. 4) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+    printf("\
+    ^
+tests/calibration.c:159:5: warning: %li in format string (no. 5) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+    printf("\
+    ^
+tests/calibration.c:159:5: warning: %li in format string (no. 6) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+    printf("\
+    ^
+tests/calibration.c:159:5: warning: %li in format string (no. 7) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+    printf("\
+    ^
+tests/calibration.c:159:5: warning: %li in format string (no. 8) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+    printf("\
+    ^
+tests/calibration.c:35:9: style: The scope of the variable 'c' can be reduced. [variableScope]
+    int c;
+        ^
 nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
 
