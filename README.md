@@ -48,19 +48,7 @@ See the explanation [here](https://github.com/endail/hx711-pico-c#custom-pio-pro
 
 ## Initialise the HX711
 
-You will always need to initialise the HX711 before using it as a scale, so do this first:
-
-```c
-hx711_t hx;
-
-hx711_init(
-    &hx,
-    clkPin,
-    datPin,
-    pio0,
-    &hx711_noblock_program,
-    &hx711_noblock_program_init);
-```
+You will always need to initialise the HX711 before using it as a scale. See [here](https://github.com/endail/hx711-pico-c#how-to-use) for how to do that.
 
 ## How to Use the HX711 as a Scale
 
