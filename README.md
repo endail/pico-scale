@@ -139,9 +139,9 @@ else {
 
 1. Modify [the calibration program](calibration.c#L68-L75) and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.
 
-2. Build.
+2. Build by running `CTest`.
 
-3. Copy `calibration.uf2` in the build directory to the Raspberry Pi Pico.
+3. Copy `calibration.uf2` in the `build/tests/` directory to the Raspberry Pi Pico.
 
 4. Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.
 
