@@ -218,7 +218,8 @@ FAQ</h1>
 <li><code>mass_lb</code>: pounds</li>
 <li><code>mass_oz</code>: ounces</li>
 </ul>
-<p>Q: __"How do I get the weight in pounds/ounces/tons/etc...?"__ A: You can either: set the <code><a class="el" href="structscale__t.html">scale_t</a></code> or change the <code><a class="el" href="structmass__t.html">mass_t</a></code>.</p>
+<p>Q: __"How do I get the weight in pounds/ounces/tons/etc...?"__</p>
+<p>A: You can either: set the <code><a class="el" href="structscale__t.html">scale_t</a></code> or change the <code><a class="el" href="structmass__t.html">mass_t</a></code>.</p>
 <div class="fragment"><div class="line"><span class="comment">// 1. setting the scale_t</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// when you initialise the scale</span></div>
@@ -243,7 +244,8 @@ FAQ</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// or, if you&#39;ve already initialised a mass_t</span></div>
 <div class="line">m.unit = <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a7af3a1afe5e8180a1089284d09b1d833">mass_lb</a>;</div>
-</div><!-- fragment --><p>Q: __"How do I perform math on the weights?"__ A: You can either: get the underlying value and operate on that, or use the in-built functions to operate on two <code><a class="el" href="structmass__t.html">mass_t</a></code> structs.</p>
+</div><!-- fragment --><p>Q: __"How do I perform math on the weights?"__</p>
+<p>A: You can either: get the underlying value and operate on that, or use the in-built functions to operate on two <code><a class="el" href="structmass__t.html">mass_t</a></code> structs.</p>
 <div class="fragment"><div class="line"><span class="comment">// 1. get the underlying value</span></div>
 <div class="line"><span class="keywordtype">double</span> val;</div>
 <div class="line"><a class="code" href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a>(&amp;m, &amp;val);</div>
@@ -257,7 +259,8 @@ FAQ</h1>
 <div class="line">    <span class="comment">//do something if m1 is greater than m2</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p>The advantage of using the built-in functions is that the <code><a class="el" href="structmass__t.html">mass_t</a></code> structs can be of different units. So you can check if, for example, <code>m1</code> is greater than or equal to <code>m2</code>, even if <code>m1</code> is is in pounds and <code>m2</code> is in kilograms.</p>
-<p>Q: __"Which math functions are available?"__ A:</p>
+<p>Q: __"Which math functions are available?"__</p>
+<p>A:</p>
 <ul>
 <li><code>mass_add(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: add <code>lhs</code> and <code>rhs</code> and store result in <code>res</code></li>
 <li><code>mass_sub(mass_t* lhs, mass_t* rhs, mass_t* res)</code>: subtract <code>rhs</code> from <code>lhs</code> and store result in <code>res</code></li>
@@ -298,7 +301,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 15:29:40 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 15:30:23 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
