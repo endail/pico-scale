@@ -1,6 +1,6 @@
 # pico-scale
 
-A scale application for a Raspberry Pi Pico using the [hx711-pico-c library](https://github.com/endail/hx711-pico-c).
+A scale API for a Raspberry Pi Pico (RP2040) using the [hx711-pico-c library](https://github.com/endail/hx711-pico-c).
 
 ![resources/hx711_serialout.gif](resources/hx711_serialout.gif)
 
