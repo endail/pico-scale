@@ -86,20 +86,42 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>A scale application for a Raspberry Pi Pico using the <a href="https://github.com/endail/hx711-pico-c">hx711-pico-c library</a>.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Clone Repository</h1>
-<div class="fragment"><div class="line">git clone https://github.com/endail/pico-scale</div>
-<div class="line">git submodule update --init</div>
-</div><!-- fragment --><p>After building, copy <code>main.uf2</code> in the build directory to the Raspberry Pi Pico and then open up a serial connection to the Pico at a baud rate of 115200.</p>
-<p>I have used <a href="https://paulbupejr.com/raspberry-pi-pico-windows-development/">this helpful tutorial</a> to setup my Windows environment in order to program the Pico via Visual Studio Code.</p>
 <p><img src="resources/hx711_serialout.gif" alt="resources/hx711_serialout.gif" class="inline"/></p>
 <p>The .gif above illustrates the <a href="main.c">current example code</a> obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-How to Use</h1>
-<p>First, initialise the HX711 (referred to as <code>hx</code> in the following code examples). For details on how to do this, see <a href="https://github.com/endail/hx711-pico-c">here</a>.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Clone</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Method 1</h2>
+<p>If you want to use this repository as-is with the example code, clone the respository and initialise the <code>hx711-pico-c</code> submodule.</p>
+<div class="fragment"><div class="line">git clone https://github.com/endail/pico-scale</div>
+<div class="line">git submodule update --init</div>
+</div><!-- fragment --><p>Then <code>#include</code> as follows:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="scale_8h.html">include/scale.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Method 2</h2>
+<p>Alternatively, if you want to use the scale functionality as an API in your own project, add <code>pico-scale</code> as a submodule and then initialise it.</p>
+<div class="fragment"><div class="line">git submodule add https://github.com/endail/pico-scale extern/</div>
+<div class="line">git submodle update --init --recursive</div>
+</div><!-- fragment --><p>Then, from your own code, <code>#include</code> the relevant files as follows and initialise the hx711:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/include/scale.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
+</div><!-- fragment --><p>See the explanation <a href="https://github.com/endail/hx711-pico-c#custom-pio-programs">here</a> for why you need to manually include the PIO program.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Initialise the HX711</h1>
+<p>You will always need to initialise the HX711 before using it as a scale, so do this first</p>
+<div class="fragment"><div class="line">hx711_t hx;</div>
 <div class="line"> </div>
-<div class="line"><a class="code" href="structscale__t.html">scale_t</a> sc;</div>
+<div class="line">hx711_init(</div>
+<div class="line">    &amp;hx,</div>
+<div class="line">    clkPin,</div>
+<div class="line">    datPin,</div>
+<div class="line">    pio0,</div>
+<div class="line">    &amp;hx711_noblock_program,</div>
+<div class="line">    &amp;hx711_noblock_program_init);</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+How to Use the HX711 as a Scale</h1>
+<div class="fragment"><div class="line"><a class="code" href="structscale__t.html">scale_t</a> sc;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// the values obtained when calibrating the scale</span></div>
 <div class="line"><span class="comment">// if you don&#39;t know them, read the following section How to Calibrate</span></div>
@@ -179,7 +201,7 @@ How to Use</h1>
 <div class="line"><span class="keywordflow">else</span> {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;Failed to read weight\n&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 How to Calibrate</h1>
 <ol type="1">
 <li>Modify <a href="calibration.c#L68-L75">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
@@ -206,7 +228,7 @@ How to Calibrate</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 12:34:23 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 14:06:46 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
