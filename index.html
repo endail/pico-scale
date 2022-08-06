@@ -199,8 +199,8 @@ How to Use the HX711 as a Scale</h1>
 How to Calibrate</h1>
 <ol type="1">
 <li>Modify <a href="calibration.c#L68-L75">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
-<li>Build.</li>
-<li>Copy <code>calibration.uf2</code> in the build directory to the Raspberry Pi Pico.</li>
+<li>Build by running <code>CTest</code>.</li>
+<li>Copy <code>calibration.uf2</code> in the <code>build/tests/</code> directory to the Raspberry Pi Pico.</li>
 <li>Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md8"></a>
@@ -302,7 +302,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 16:27:55 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 16:29:31 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
