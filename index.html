@@ -108,6 +108,9 @@ Method 2</h2>
 <div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
 </div><!-- fragment --><p>See the explanation <a href="https://github.com/endail/hx711-pico-c#custom-pio-programs">here</a> for why you need to manually include the PIO program.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
+Documentation</h1>
+<p><a href="https://endail.github.io/pico-scale/">https://endail.github.io/pico-scale</a></p>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Initialise the HX711</h1>
 <p>You will always need to initialise the HX711 before using it as a scale, so do this first</p>
 <div class="fragment"><div class="line">hx711_t hx;</div>
@@ -119,7 +122,7 @@ Initialise the HX711</h1>
 <div class="line">    pio0,</div>
 <div class="line">    &amp;hx711_noblock_program,</div>
 <div class="line">    &amp;hx711_noblock_program_init);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 How to Use the HX711 as a Scale</h1>
 <div class="fragment"><div class="line"><a class="code" href="structscale__t.html">scale_t</a> sc;</div>
 <div class="line"> </div>
@@ -201,7 +204,7 @@ How to Use the HX711 as a Scale</h1>
 <div class="line"><span class="keywordflow">else</span> {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;Failed to read weight\n&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 How to Calibrate</h1>
 <ol type="1">
 <li>Modify <a href="calibration.c#L68-L75">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
@@ -228,7 +231,7 @@ How to Calibrate</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 14:28:11 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 14:43:48 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
