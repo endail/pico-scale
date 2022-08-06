@@ -96,10 +96,7 @@ Clone Repository</h1>
 <p>The .gif above illustrates the <a href="main.c">current example code</a> obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 How to Use</h1>
-<ol type="1">
-<li>Initialise the HX711. For details on how to do this, see <a href="https://github.com/endail/hx711-pico-c">here</a>.</li>
-<li>Initialise the scale.</li>
-</ol>
+<p>First, initialise the HX711 (referred to as <code>hx</code> in the following code examples). For details on how to do this, see <a href="https://github.com/endail/hx711-pico-c">here</a>.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="scale_8h.html">include/scale.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="structscale__t.html">scale_t</a> sc;</div>
@@ -116,10 +113,10 @@ How to Use</h1>
 <div class="line">    scaleUnit,</div>
 <div class="line">    refUnit,</div>
 <div class="line">    offset);</div>
-</div><!-- fragment --><ol type="1">
-<li>Set options for how the scale will read and interpret values</li>
-</ol>
-<div class="fragment"><div class="line"><span class="comment">// SCALE_DEFAULT_OPTIONS will give some default settings which you</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 3. Set options for how the scale will read and interpret values</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// SCALE_DEFAULT_OPTIONS will give some default settings which you</span></div>
 <div class="line"><span class="comment">// do not have to use</span></div>
 <div class="line"><a class="code" href="structscale__options__t.html">scale_options_t</a> opt = <a class="code" href="scale_8h.html#a0ee40743499233ab7ded69bc522adcf3">SCALE_DEFAULT_OPTIONS</a>;</div>
 <div class="line"> </div>
@@ -146,19 +143,18 @@ How to Use</h1>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">// These options mean... collect as many samples as possible within 250ms</span></div>
 <div class="line"><span class="comment">// and then use the average of all those samples.</span></div>
-</div><!-- fragment --><ol type="1">
-<li>Zero the scale (OPTIONAL) (aka. tare)</li>
-</ol>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span>(<a class="code" href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a>(&amp;sc, &amp;opt)) {</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 4. Zero the scale (OPTIONAL) (aka. tare)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span>(<a class="code" href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a>(&amp;sc, &amp;opt)) {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;Scale zeroed successfully\n&quot;</span>);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordflow">else</span> {</div>
 <div class="line">    printf(<span class="stringliteral">&quot;Scale failed to zero\n&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><ol type="1">
-<li>Obtain the weight</li>
-</ol>
-<div class="fragment"><div class="line"><a class="code" href="structmass__t.html">mass_t</a> mass;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 5. Obtain the weight</span></div>
+<div class="line"><a class="code" href="structmass__t.html">mass_t</a> mass;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span>(<a class="code" href="scale_8h.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a>(&amp;sc, &amp;mass, &amp;opt)) {</div>
 <div class="line"> </div>
@@ -210,7 +206,7 @@ How to Calibrate</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 6 2022 12:25:31 for pico-scale by
+    <li class="footer">Generated on Sat Aug 6 2022 12:34:23 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
