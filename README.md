@@ -2,27 +2,65 @@
 
 A scale application for a Raspberry Pi Pico using the [hx711-pico-c library](https://github.com/endail/hx711-pico-c).
 
-## Clone Repository
+![resources/hx711_serialout.gif](resources/hx711_serialout.gif)
+
+The .gif above illustrates the [current example code](main.c) obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.
+
+## Clone
+
+### Method 1
+
+If you want to use this repository as-is with the example code, clone the respository and initialise the `hx711-pico-c` submodule.
+
 ```console
 git clone https://github.com/endail/pico-scale
 git submodule update --init
 ```
 
-After building, copy `main.uf2` in the build directory to the Raspberry Pi Pico and then open up a serial connection to the Pico at a baud rate of 115200.
-
-I have used [this helpful tutorial](https://paulbupejr.com/raspberry-pi-pico-windows-development/) to setup my Windows environment in order to program the Pico via Visual Studio Code.
-
-![resources/hx711_serialout.gif](resources/hx711_serialout.gif)
-
-The .gif above illustrates the [current example code](main.c) obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.
-
-## How to Use
-
-First, initialise the HX711 (referred to as `hx` in the following code examples). For details on how to do this, see [here](https://github.com/endail/hx711-pico-c).
+Then `#include` as follows:
 
 ```c
 #include "include/scale.h"
+#include "extern/hx711-pico-c/include/hx711_noblock.pio.h"
+```
 
+### Method 2
+
+Alternatively, if you want to use the scale functionality as an API in your own project, add `pico-scale` as a submodule and then initialise it.
+
+```console
+git submodule add https://github.com/endail/pico-scale extern/
+git submodle update --init --recursive
+```
+
+Then, from your own code, `#include` the relevant files as follows and initialise the hx711:
+
+```c
+#include "extern/pico-scale/include/scale.h"
+#include "extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h"
+```
+
+See the explanation [here](https://github.com/endail/hx711-pico-c#custom-pio-programs) for why you need to manually include the PIO program.
+
+## Initialise the HX711
+
+You will always need to initialise the HX711 before using it as a scale, so do this first
+
+```c
+hx711_t hx;
+
+hx711_init(
+    &hx,
+    clkPin,
+    datPin,
+    pio0,
+    &hx711_noblock_program,
+    &hx711_noblock_program_init);
+```
+
+## How to Use the HX711 as a Scale
+
+```c
 scale_t sc;
 
 // the values obtained when calibrating the scale
