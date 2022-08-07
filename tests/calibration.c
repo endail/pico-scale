@@ -161,7 +161,7 @@ Known weight (your object): %f %s\n\
 Raw value over %lu samples: %i\n\
 \n\
 -> REFERENCE UNIT: %i\n\
--> ZERO VALUE: li\n\
+-> ZERO VALUE: %i\n\
 \n\
 You can provide these values to the scale_init() function. For example: \n\
 \n\
