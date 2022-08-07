@@ -31,11 +31,25 @@
 extern "C" {
 #endif
 
+/**
+ * @brief Calculates the average value from an array of signed 32-bit integers
+ * 
+ * @param arr array of values
+ * @param len number of values in the array
+ * @param avg 
+ */
 void util_average(
     const int32_t* const arr,
     const size_t len,
     double* const avg);
 
+/**
+ * @brief Calculates the median value from an array of signed 32-bit integers
+ * 
+ * @param arr array of values
+ * @param len number of values in the array
+ * @param med 
+ */
 void util_median(
     int32_t* const arr,
     const size_t len,

@@ -78,10 +78,22 @@ typedef enum {
     mass_oz
 } mass_unit_t;
 
+/**
+ * @brief Returns a pointer to char with the textual representation of the unit
+ * 
+ * @param u 
+ * @return const char* const 
+ */
 static inline const char* const mass_unit_to_string(const mass_unit_t u) {
     return MASS_NAMES[(uint)u];
 }
 
+/**
+ * @brief Returns a pointer to a double with the number of micrograms per unit
+ * 
+ * @param u 
+ * @return const double* const 
+ */
 static inline const double* const mass_unit_to_ratio(const mass_unit_t u) {
     return &MASS_RATIOS[(uint)u];
 }
@@ -91,12 +103,27 @@ typedef struct {
     mass_unit_t unit;
 } mass_t;
 
+/**
+ * @brief Converts a floating point value from one unit to another
+ * 
+ * @param fromAmount 
+ * @param toAmount 
+ * @param fromUnit 
+ * @param toUnit 
+ */
 void mass_convert(
     const double* const fromAmount,
     double* const toAmount,
     const mass_unit_t fromUnit,
     const mass_unit_t toUnit);
 
+/**
+ * @brief Initialises a mass_t with the given unit and value
+ * 
+ * @param m 
+ * @param unit 
+ * @param val 
+ */
 static inline void mass_init(
     mass_t* const m,
     const mass_unit_t unit,
@@ -109,6 +136,12 @@ static inline void mass_init(
 
 }
 
+/**
+ * @brief Sets val to the value representing the mass_t according to its unt
+ * 
+ * @param m 
+ * @param val 
+ */
 static inline void mass_get_value(
     const mass_t* const m,
     double* const val) {
@@ -120,6 +153,13 @@ static inline void mass_get_value(
 
 }
 
+/**
+ * @brief Add lhs to rhs and store result in res
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @param res 
+ */
 static inline void mass_add(
     const mass_t* const lhs,
     const mass_t* const rhs,
@@ -134,6 +174,13 @@ static inline void mass_add(
 
 }
 
+/**
+ * @brief Substract rhs from lhs and store result in res
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @param res 
+ */
 static inline void mass_sub(
     const mass_t* const lhs,
     const mass_t* const rhs,
@@ -148,6 +195,13 @@ static inline void mass_sub(
 
 }
 
+/**
+ * @brief Multiply lhs by rhs and store result in res
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @param res 
+ */
 static inline void mass_mul(
     const mass_t* const lhs,
     const mass_t* const rhs,
@@ -162,6 +216,15 @@ static inline void mass_mul(
 
 }
 
+/**
+ * @brief Divide lhs by rhs and store result in res, returns false if rhs is 0
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @param res 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_div(
     const mass_t* const lhs,
     const mass_t* const rhs,
@@ -182,30 +245,64 @@ static inline bool mass_div(
 
 }
 
+/**
+ * @brief Add rhs to self
+ * 
+ * @param self 
+ * @param rhs 
+ */
 static inline void mass_addeq(
     mass_t* const self,
     const mass_t* const rhs) {
         mass_add(self, rhs, self);
 }
 
+/**
+ * @brief Subtract rhs from self
+ * 
+ * @param self 
+ * @param rhs 
+ */
 static inline void mass_subeq(
     mass_t* const self,
     const mass_t* const rhs) {
         mass_sub(self, rhs, self);
 }
 
+/**
+ * @brief Multiply self by rhs
+ * 
+ * @param self 
+ * @param rhs 
+ */
 static inline void mass_muleq(
     mass_t* const self,
     const mass_t* const rhs) {
         mass_mul(self, rhs, self);
 }
 
+/**
+ * @brief Divide self by rhs, returns false if rhs is 0
+ * 
+ * @param self 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_diveq(
     mass_t* const self,
     const mass_t* const rhs) {
         return mass_div(self, rhs, self);
 }
 
+/**
+ * @brief Returns true if lhs equals rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_eq(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -218,6 +315,14 @@ static inline bool mass_eq(
 
 }
 
+/**
+ * @brief Returns true if lhs does not equal rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_neq(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -229,6 +334,14 @@ static inline bool mass_neq(
 
 }
 
+/**
+ * @brief Returns true if lhs is less than rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_lt(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -240,6 +353,14 @@ static inline bool mass_lt(
 
 }
 
+/**
+ * @brief Returns true if lhs is greater than rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_gt(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -251,6 +372,14 @@ static inline bool mass_gt(
 
 }
 
+/**
+ * @brief Returns true if lhs is less than or equal to rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_lteq(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -262,6 +391,14 @@ static inline bool mass_lteq(
 
 }
 
+/**
+ * @brief Returns true if lhs is greater than or equal to rhs
+ * 
+ * @param lhs 
+ * @param rhs 
+ * @return true 
+ * @return false 
+ */
 static inline bool mass_gteq(
     const mass_t* const lhs,
     const mass_t* const rhs) {
@@ -274,8 +411,12 @@ static inline bool mass_gteq(
 }
 
 /**
- * buff must be at least MASS_TO_STRING_BUFF_SIZE in length
- * return result of snprintf
+ * @brief Fills buff with the string representation of the mass_t
+ * 
+ * @example "32.4762 mg"
+ * @param m 
+ * @param buff Must be at least MASS_TO_STRING_BUFF_SIZE in length
+ * @return int Returns result of snprintf
  */
 int mass_to_string(
     const mass_t* const m,
