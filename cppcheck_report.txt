@@ -1,8 +1,5 @@
 tests/calibration.c:158:5: portability: %lu in format string (no. 3) requires 'unsigned long' but the argument type is 'size_t {aka unsigned long}'. [invalidPrintfArgType_uint]
     printf("\
     ^
-tests/calibration.c:158:5: warning: printf format string requires 7 parameters but 8 are given. [wrongPrintfScanfArgNum]
-    printf("\
-    ^
 nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
 
