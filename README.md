@@ -31,7 +31,7 @@ Run CTest to build the example and calibration programs. The `.uf2` files you up
 Alternatively, if you want to use the scale functionality as an API in your own project, add `pico-scale` as a submodule and then initialise it.
 
 ```console
-git submodule add https://github.com/endail/pico-scale extern/
+git submodule add https://github.com/endail/pico-scale extern/pico-scale
 git submodle update --init --recursive
 ```
 
