@@ -93,8 +93,7 @@ Clone</h1>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Method 1</h2>
 <p>If you want to use this repository as-is with the example code, clone the respository and initialise the <code>hx711-pico-c</code> submodule.</p>
-<div class="fragment"><div class="line">git clone https://github.com/endail/pico-scale</div>
-<div class="line">git submodule update --init</div>
+<div class="fragment"><div class="line">git clone --recurse-submodules https://github.com/endail/pico-scale</div>
 </div><!-- fragment --><p>Then <code>#include</code> as follows:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="scale_8h.html">include/scale.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
@@ -103,7 +102,7 @@ Method 1</h2>
 Method 2</h2>
 <p>Alternatively, if you want to use the scale functionality as an API in your own project, add <code>pico-scale</code> as a submodule and then initialise it.</p>
 <div class="fragment"><div class="line">git submodule add https://github.com/endail/pico-scale extern/pico-scale</div>
-<div class="line">git submodle update --init --recursive</div>
+<div class="line">git submodule update --init --recursive</div>
 </div><!-- fragment --><p>Then, from your own code, <code>#include</code> the relevant files as follows and initialise the hx711:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/include/scale.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
@@ -303,7 +302,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 7 2022 08:50:33 for pico-scale by
+    <li class="footer">Generated on Sun Aug 7 2022 08:57:12 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
