@@ -13,8 +13,7 @@ The .gif above illustrates the [current example code](main.c) obtaining data fro
 If you want to use this repository as-is with the example code, clone the respository and initialise the `hx711-pico-c` submodule.
 
 ```console
-git clone https://github.com/endail/pico-scale
-git submodule update --init
+git clone --recurse-submodules https://github.com/endail/pico-scale
 ```
 
 Then `#include` as follows:
@@ -32,7 +31,7 @@ Alternatively, if you want to use the scale functionality as an API in your own 
 
 ```console
 git submodule add https://github.com/endail/pico-scale extern/pico-scale
-git submodle update --init --recursive
+git submodule update --init --recursive
 ```
 
 Then, from your own code, `#include` the relevant files as follows and initialise the hx711:
