@@ -1,26 +1,8 @@
-tests/calibration.c:159:5: portability: %u in format string (no. 3) requires 'unsigned int' but the argument type is 'size_t {aka unsigned long}'. [invalidPrintfArgType_uint]
+tests/calibration.c:158:5: portability: %lu in format string (no. 3) requires 'unsigned long' but the argument type is 'size_t {aka unsigned long}'. [invalidPrintfArgType_uint]
     printf("\
     ^
-tests/calibration.c:159:5: warning: %li in format string (no. 4) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
+tests/calibration.c:158:5: warning: printf format string requires 7 parameters but 8 are given. [wrongPrintfScanfArgNum]
     printf("\
     ^
-tests/calibration.c:159:5: warning: %li in format string (no. 5) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-tests/calibration.c:159:5: warning: %li in format string (no. 6) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-tests/calibration.c:159:5: warning: %li in format string (no. 7) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-tests/calibration.c:159:5: warning: %li in format string (no. 8) requires 'long' but the argument type is 'signed int'. [invalidPrintfArgType_sint]
-    printf("\
-    ^
-tests/calibration.c:35:9: style: The scope of the variable 'c' can be reduced. [variableScope]
-    int c;
-        ^
-src/scale.c:163:0: information: Unmatched suppression: objectIndex [unmatchedSuppression]
-            (*arr)[(*len) - 1] = val;
-^
 nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
 
