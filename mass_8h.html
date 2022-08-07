@@ -183,6 +183,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a956c9022192d8c9984226de018c83c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if lhs is greater than or equal to rhs.  <a href="mass_8h.html#a956c9022192d8c9984226de018c83c00">More...</a><br /></td></tr>
 <tr class="separator:a956c9022192d8c9984226de018c83c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367bf5be9ac90d196919b0d5fbf63d93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mass_8h.html#a367bf5be9ac90d196919b0d5fbf63d93">mass_to_string</a> (const <a class="el" href="structmass__t.html">mass_t</a> *const m, char *const buff)</td></tr>
+<tr class="memdesc:a367bf5be9ac90d196919b0d5fbf63d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills buff with the string representation of the <a class="el" href="structmass__t.html">mass_t</a>. eg. "32.4762 mg".  <a href="mass_8h.html#a367bf5be9ac90d196919b0d5fbf63d93">More...</a><br /></td></tr>
 <tr class="separator:a367bf5be9ac90d196919b0d5fbf63d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -1323,6 +1324,16 @@ false </dd></dl>
       </table>
 </div><div class="memdoc">
 
+<p>Fills buff with the string representation of the <a class="el" href="structmass__t.html">mass_t</a>. eg. "32.4762 mg". </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td></td></tr>
+    <tr><td class="paramname">buff</td><td>Must be at least MASS_TO_STRING_BUFF_SIZE in length </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Returns result of snprintf </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="mass_8c_source.html#l00026">26</a> of file <a class="el" href="mass_8c_source.html">mass.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                      {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
@@ -1579,7 +1590,7 @@ false </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="mass_8h.html">mass.h</a></li>
-    <li class="footer">Generated on Sun Aug 7 2022 07:03:08 for pico-scale by
+    <li class="footer">Generated on Sun Aug 7 2022 07:05:40 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
