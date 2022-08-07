@@ -1,2 +1,2 @@
-nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+nofile:0:0: information: Unmatched suppression: unusedFunction [unmatchedSuppression]
 
