@@ -97,6 +97,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a367bf5be9ac90d196919b0d5fbf63d93"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mass_8c.html#a367bf5be9ac90d196919b0d5fbf63d93">mass_to_string</a> (const <a class="el" href="structmass__t.html">mass_t</a> *const m, char *const buff)</td></tr>
 <tr class="separator:a367bf5be9ac90d196919b0d5fbf63d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e45fd88f5c52c326039c04cb9b28884"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mass_8c.html#a7e45fd88f5c52c326039c04cb9b28884">mass_convert</a> (const double *const fromAmount, double *const toAmount, const <a class="el" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27">mass_unit_t</a> fromUnit, const <a class="el" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27">mass_unit_t</a> toUnit)</td></tr>
+<tr class="memdesc:a7e45fd88f5c52c326039c04cb9b28884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a floating point value from one unit to another.  <a href="mass_8c.html#a7e45fd88f5c52c326039c04cb9b28884">More...</a><br /></td></tr>
 <tr class="separator:a7e45fd88f5c52c326039c04cb9b28884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -138,6 +139,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Converts a floating point value from one unit to another. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromAmount</td><td></td></tr>
+    <tr><td class="paramname">toAmount</td><td></td></tr>
+    <tr><td class="paramname">fromUnit</td><td></td></tr>
+    <tr><td class="paramname">toUnit</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="mass_8c_source.html#l00054">54</a> of file <a class="el" href="mass_8c_source.html">mass.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                              {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
@@ -159,9 +171,9 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="mass_8h_source.html#l00069">mass_ug</a>, and <a class="el" href="mass_8h_source.html#l00085">mass_unit_to_ratio()</a>.</p>
+<p class="reference">References <a class="el" href="mass_8h_source.html#l00069">mass_ug</a>, and <a class="el" href="mass_8h_source.html#l00097">mass_unit_to_ratio()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="mass_8h_source.html#l00112">mass_get_value()</a>, and <a class="el" href="mass_8h_source.html#l00100">mass_init()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="mass_8h_source.html#l00145">mass_get_value()</a>, and <a class="el" href="mass_8h_source.html#l00127">mass_init()</a>.</p>
 
 </div>
 </div>
@@ -190,7 +202,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>buff must be at least MASS_TO_STRING_BUFF_SIZE in length return result of snprintf </p>
 
 <p class="definition">Definition at line <a class="el" href="mass_8c_source.html#l00026">26</a> of file <a class="el" href="mass_8c_source.html">mass.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                      {</div>
@@ -219,24 +230,24 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="mass_8h_source.html#l00112">mass_get_value()</a>, <a class="el" href="mass_8h_source.html#l00063">MASS_TO_STRING_BUFF_SIZE</a>, <a class="el" href="mass_8h_source.html#l00081">mass_unit_to_string()</a>, and <a class="el" href="mass_8h_source.html#l00091">mass_t::unit</a>.</p>
+<p class="reference">References <a class="el" href="mass_8h_source.html#l00145">mass_get_value()</a>, <a class="el" href="mass_8h_source.html#l00063">MASS_TO_STRING_BUFF_SIZE</a>, <a class="el" href="mass_8h_source.html#l00087">mass_unit_to_string()</a>, and <a class="el" href="mass_8h_source.html#l00103">mass_t::unit</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="amass_8h_html_ab28d1b0ca8b77352ab057d1fd984462a"><div class="ttname"><a href="mass_8h.html#ab28d1b0ca8b77352ab057d1fd984462a">mass_unit_to_string</a></div><div class="ttdeci">static const char *const mass_unit_to_string(const mass_unit_t u)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00081">mass.h:81</a></div></div>
-<div class="ttc" id="amass_8c_html_a7e45fd88f5c52c326039c04cb9b28884"><div class="ttname"><a href="mass_8c.html#a7e45fd88f5c52c326039c04cb9b28884">mass_convert</a></div><div class="ttdeci">void mass_convert(const double *const fromAmount, double *const toAmount, const mass_unit_t fromUnit, const mass_unit_t toUnit)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8c_source.html#l00054">mass.c:54</a></div></div>
-<div class="ttc" id="amass_8h_html_adcc94737143cdd25beb95b665c04e6c5"><div class="ttname"><a href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a></div><div class="ttdeci">static void mass_get_value(const mass_t *const m, double *const val)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00112">mass.h:112</a></div></div>
-<div class="ttc" id="astructmass__t_html_ad9bdecb4a01c302484036f4ea2d2abc9"><div class="ttname"><a href="structmass__t.html#ad9bdecb4a01c302484036f4ea2d2abc9">mass_t::unit</a></div><div class="ttdeci">mass_unit_t unit</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00091">mass.h:91</a></div></div>
+<div class="ttc" id="amass_8h_html_ab28d1b0ca8b77352ab057d1fd984462a"><div class="ttname"><a href="mass_8h.html#ab28d1b0ca8b77352ab057d1fd984462a">mass_unit_to_string</a></div><div class="ttdeci">static const char *const mass_unit_to_string(const mass_unit_t u)</div><div class="ttdoc">Returns a pointer to char with the textual representation of the unit.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00087">mass.h:87</a></div></div>
+<div class="ttc" id="amass_8c_html_a7e45fd88f5c52c326039c04cb9b28884"><div class="ttname"><a href="mass_8c.html#a7e45fd88f5c52c326039c04cb9b28884">mass_convert</a></div><div class="ttdeci">void mass_convert(const double *const fromAmount, double *const toAmount, const mass_unit_t fromUnit, const mass_unit_t toUnit)</div><div class="ttdoc">Converts a floating point value from one unit to another.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8c_source.html#l00054">mass.c:54</a></div></div>
+<div class="ttc" id="amass_8h_html_adcc94737143cdd25beb95b665c04e6c5"><div class="ttname"><a href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a></div><div class="ttdeci">static void mass_get_value(const mass_t *const m, double *const val)</div><div class="ttdoc">Sets val to the value representing the mass_t according to its unt.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00145">mass.h:145</a></div></div>
+<div class="ttc" id="astructmass__t_html_ad9bdecb4a01c302484036f4ea2d2abc9"><div class="ttname"><a href="structmass__t.html#ad9bdecb4a01c302484036f4ea2d2abc9">mass_t::unit</a></div><div class="ttdeci">mass_unit_t unit</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00103">mass.h:103</a></div></div>
 <div class="ttc" id="amass_8h_html_a63594d9cf123405a03d0ab838daa9a27ace41dd98de7fd7867c74b1840229d519"><div class="ttname"><a href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27ace41dd98de7fd7867c74b1840229d519">mass_ug</a></div><div class="ttdeci">@ mass_ug</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00069">mass.h:69</a></div></div>
 <div class="ttc" id="amass_8h_html_ae8be3e5bc64f2ae5441d61c5ee080a8f"><div class="ttname"><a href="mass_8h.html#ae8be3e5bc64f2ae5441d61c5ee080a8f">MASS_TO_STRING_BUFF_SIZE</a></div><div class="ttdeci">static const size_t MASS_TO_STRING_BUFF_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00063">mass.h:63</a></div></div>
-<div class="ttc" id="amass_8h_html_a95b1ba9a236a1e2117c26da65f29a693"><div class="ttname"><a href="mass_8h.html#a95b1ba9a236a1e2117c26da65f29a693">mass_unit_to_ratio</a></div><div class="ttdeci">static const double *const mass_unit_to_ratio(const mass_unit_t u)</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00085">mass.h:85</a></div></div>
+<div class="ttc" id="amass_8h_html_a95b1ba9a236a1e2117c26da65f29a693"><div class="ttname"><a href="mass_8h.html#a95b1ba9a236a1e2117c26da65f29a693">mass_unit_to_ratio</a></div><div class="ttdeci">static const double *const mass_unit_to_ratio(const mass_unit_t u)</div><div class="ttdoc">Returns a pointer to a double with the number of micrograms per unit.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00097">mass.h:97</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mass_8c.html">mass.c</a></li>
-    <li class="footer">Generated on Sat Aug 6 2022 16:29:31 for pico-scale by
+    <li class="footer">Generated on Sun Aug 7 2022 07:03:08 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

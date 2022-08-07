@@ -95,8 +95,10 @@ $(document).ready(function(){initNavTree('util_8c.html',''); initResizable(); })
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa501515573fe126dc152ed300ac529ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8c.html#aa501515573fe126dc152ed300ac529ef">util_average</a> (const int32_t *const arr, const size_t len, double *const avg)</td></tr>
+<tr class="memdesc:aa501515573fe126dc152ed300ac529ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the average value from an array of signed 32-bit integers.  <a href="util_8c.html#aa501515573fe126dc152ed300ac529ef">More...</a><br /></td></tr>
 <tr class="separator:aa501515573fe126dc152ed300ac529ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3af8347b8bd848e2b66cb7cb34d7efd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util_8c.html#a3af8347b8bd848e2b66cb7cb34d7efd5">util_median</a> (int32_t *const arr, const size_t len, double *const med)</td></tr>
+<tr class="memdesc:a3af8347b8bd848e2b66cb7cb34d7efd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the median value from an array of signed 32-bit integers.  <a href="util_8c.html#a3af8347b8bd848e2b66cb7cb34d7efd5">More...</a><br /></td></tr>
 <tr class="separator:a3af8347b8bd848e2b66cb7cb34d7efd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -131,6 +133,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calculates the average value from an array of signed 32-bit integers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>array of values </td></tr>
+    <tr><td class="paramname">len</td><td>number of values in the array </td></tr>
+    <tr><td class="paramname">avg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="util_8c_source.html#l00026">26</a> of file <a class="el" href="util_8c_source.html">util.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                       {</div>
@@ -184,6 +196,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Calculates the median value from an array of signed 32-bit integers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arr</td><td>array of values </td></tr>
+    <tr><td class="paramname">len</td><td>number of values in the array </td></tr>
+    <tr><td class="paramname">med</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 <p>If the number of elements is even, the median is the average of the middle two elements. Otherwise it is the middle element.</p>
 
 <p class="definition">Definition at line <a class="el" href="util_8c_source.html#l00045">45</a> of file <a class="el" href="util_8c_source.html">util.c</a>.</p>
@@ -208,7 +230,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="util_8h_source.html#l00044">util__median_compare_func()</a>.</p>
+<p class="reference">References <a class="el" href="util_8h_source.html#l00058">util__median_compare_func()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="scale_8c_source.html#l00172">scale_read()</a>.</p>
 
@@ -216,12 +238,12 @@ Functions</h2></td></tr>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="autil_8h_html_a18d5c177d04f4b470037fd1113ed1823"><div class="ttname"><a href="util_8h.html#a18d5c177d04f4b470037fd1113ed1823">util__median_compare_func</a></div><div class="ttdeci">static int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00044">util.h:44</a></div></div>
+<div class="ttc" id="autil_8h_html_a18d5c177d04f4b470037fd1113ed1823"><div class="ttname"><a href="util_8h.html#a18d5c177d04f4b470037fd1113ed1823">util__median_compare_func</a></div><div class="ttdeci">static int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8h_source.html#l00058">util.h:58</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="util_8c.html">util.c</a></li>
-    <li class="footer">Generated on Sat Aug 6 2022 16:29:31 for pico-scale by
+    <li class="footer">Generated on Sun Aug 7 2022 07:03:08 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -1,9 +1,11 @@
 var NAVTREEINDEX0 =
 {
+"32_84762_01mg-example.html":[8,0],
 "annotated.html":[6,0],
 "classes.html":[6,1],
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[7,0,1],
 "dir_d44c64559bbebec7f509842c48db8b23.html":[7,0,0],
+"examples.html":[8],
 "files.html":[7,0],
 "functions.html":[6,2,0],
 "functions_vars.html":[6,2,1],
