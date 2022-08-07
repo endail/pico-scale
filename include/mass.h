@@ -411,9 +411,8 @@ static inline bool mass_gteq(
 }
 
 /**
- * @brief Fills buff with the string representation of the mass_t
+ * @brief Fills buff with the string representation of the mass_t. eg. "32.4762 mg"
  * 
- * @example "32.4762 mg"
  * @param m 
  * @param buff Must be at least MASS_TO_STRING_BUFF_SIZE in length
  * @return int Returns result of snprintf
