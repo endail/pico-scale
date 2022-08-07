@@ -98,7 +98,8 @@ Method 1</h2>
 </div><!-- fragment --><p>Then <code>#include</code> as follows:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="scale_8h.html">include/scale.h</a>&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --><p>Run CTest to build the example and calibration programs. The <code>.uf2</code> files you upload to your Pico will be found under <code>build/tests/</code>.</p>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Method 2</h2>
 <p>Alternatively, if you want to use the scale functionality as an API in your own project, add <code>pico-scale</code> as a submodule and then initialise it.</p>
 <div class="fragment"><div class="line">git submodule add https://github.com/endail/pico-scale extern/</div>
@@ -198,7 +199,7 @@ How to Use the HX711 as a Scale</h1>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
 How to Calibrate</h1>
 <ol type="1">
-<li>Modify <a href="calibration.c#L68-L75">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
+<li>Modify <a href="tests/calibration.c#L68-L73">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
 <li>Build by running <code>CTest</code>.</li>
 <li>Copy <code>calibration.uf2</code> in the <code>build/tests/</code> directory to the Raspberry Pi Pico.</li>
 <li>Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.</li>
@@ -302,7 +303,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Aug 7 2022 07:05:40 for pico-scale by
+    <li class="footer">Generated on Sun Aug 7 2022 07:20:55 for pico-scale by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
