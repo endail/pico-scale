@@ -159,7 +159,6 @@ bool scale_get_values_timeout(
             }
 
             //store the value in the array
-            //cppcheck-suppress objectIndex
             (*arr)[(*len) - 1] = val;
 
         }
