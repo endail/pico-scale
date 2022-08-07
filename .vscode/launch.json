@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug file->elf",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}${pathSeparator}build${pathSeparator}${relativeFileDirname}${pathSeparator}${fileBasenameNoExtension}.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "Pico2040",
+            "showDevDebugOutput": "both",
+            "runToEntryPoint": "main",
+            "preLaunchTask": "CMake Build",
+            "configFiles": [
+                "interface${pathSeparator}picoprobe.cfg",
+                "target${pathSeparator}rp2040.cfg"
+            ],
+            "searchDir": [
+                "${env:OPENOCD_PATH}${pathSeparator}tcl"
+            ],
+            "svdFile": "${env:PICO_SDK_PATH}${pathSeparator}src${pathSeparator}rp2040${pathSeparator}hardware_regs${pathSeparator}rp2040.svd"
+        }
+    ]
+}
