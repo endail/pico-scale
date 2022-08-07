@@ -24,6 +24,8 @@ Then `#include` as follows:
 #include "extern/hx711-pico-c/include/hx711_noblock.pio.h"
 ```
 
+Run CTest to build the example and calibration programs. The `.uf2` files you upload to your Pico will be found under `build/tests/`.
+
 ### Method 2
 
 Alternatively, if you want to use the scale functionality as an API in your own project, add `pico-scale` as a submodule and then initialise it.
@@ -137,7 +139,7 @@ else {
 
 ## How to Calibrate
 
-1. Modify [the calibration program](calibration.c#L68-L75) and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.
+1. Modify [the calibration program](tests/calibration.c#L68-L73) and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.
 
 2. Build by running `CTest`.
 
