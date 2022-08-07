@@ -158,7 +158,7 @@ if you chose 'g', enter the weight of the object in grams): ");
     printf("\
 \n\n\
 Known weight (your object): %f %s\n\
-Raw value over %lu samples: %i\n\
+Raw value over %zu samples: %i\n\
 \n\
 -> REFERENCE UNIT: %i\n\
 -> ZERO VALUE: %i\n\
