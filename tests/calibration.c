@@ -155,6 +155,7 @@ if you chose 'g', enter the weight of the object in grams): ");
         refUnit = 1;
     }
 
+    //cppcheck-suppress invalidPrintfArgType_sint
     printf("\
 \n\n\
 Known weight (your object): %f %s\n\
