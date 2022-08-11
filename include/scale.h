@@ -121,7 +121,7 @@ bool scale_get_values_samples(
  * @param sc 
  * @param arr 
  * @param len Will be to the number of samples obtained
- * @param timeout 
+ * @param timeout Microseconds
  * @return true 
  * @return false 
  */
@@ -129,7 +129,7 @@ bool scale_get_values_timeout(
     scale_t* const sc,
     int32_t** const arr,
     size_t* const len,
-    const absolute_time_t* const timeout);
+    const uint64_t* const timeout);
 
 /**
  * @brief Obtains a value from the scale according to the given options. Returns

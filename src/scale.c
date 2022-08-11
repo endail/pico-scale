@@ -22,6 +22,7 @@
 
 #include "../include/scale.h"
 #include "../include/util.h"
+#include "pico/time.h"
 #include <assert.h>
 #include <stdlib.h>
 
@@ -88,14 +89,13 @@ bool scale_get_values_timeout(
     scale_t* const sc,
     int32_t** const arr,
     size_t* const len,
-    const absolute_time_t* const timeout) {
+    const uint64_t* const timeout) {
 
         assert(sc != NULL);
         assert(sc->_hx != NULL);
         assert(arr != NULL);
         assert(len != NULL);
         assert(timeout != NULL);
-        assert(!is_nil_time(*timeout));
 
         int32_t val; //temporary value from the HX711
         int32_t* memblock; //ptr to the memblock
@@ -178,12 +178,12 @@ bool scale_read(
 
         int32_t* arr = NULL;
         size_t len = 0;
-        absolute_time_t timeout;
+        uint64_t timeout;
         bool ok = false; //assume error
 
         switch(opt->strat) {
         case strategy_type_time:
-            timeout = make_timeout_time_us(opt->timeout);
+            timeout = opt->timeout;
             ok = scale_get_values_timeout(
                 sc,
                 &arr,
