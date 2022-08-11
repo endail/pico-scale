@@ -1,7 +1,7 @@
 var scale_8c =
 [
     [ "scale_get_values_samples", "scale_8c.html#aeb5b70cbd9088a161fae69e6da0b6405", null ],
-    [ "scale_get_values_timeout", "scale_8c.html#a11304977a954bee8ce60522d3b0f61ea", null ],
+    [ "scale_get_values_timeout", "scale_8c.html#a18d2375e7886a393dfdcf7a5eb514dd2", null ],
     [ "scale_init", "scale_8c.html#ad23bc7d5d57a3c196dffb60866088bb4", null ],
     [ "scale_normalise", "scale_8c.html#ad36a1aada9051db90926f7092df307fd", null ],
     [ "scale_read", "scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1", null ],
