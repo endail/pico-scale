@@ -1,4 +1,4 @@
-src/scale.c:80:19: warning: The address of local variable 'arr' might be accessed at non-zero index. [objectIndex]
+src/scale.c:81:19: warning: The address of local variable 'arr' might be accessed at non-zero index. [objectIndex]
             (*arr)[i] = hx711_get_value(sc->_hx);
                   ^
 src/scale.c:199:17: note: Address of variable taken here.
@@ -7,10 +7,10 @@ src/scale.c:199:17: note: Address of variable taken here.
 src/scale.c:199:17: note: Calling function 'scale_get_values_samples', 2nd argument '&arr' value is lifetime=arr
                 &arr,
                 ^
-src/scale.c:75:51: note: Assuming condition is Assuming condition is false
+src/scale.c:76:51: note: Assuming condition is Assuming condition is false
         if((*arr = malloc(len * sizeof(int32_t))) == NULL) {
                                                   ^
-src/scale.c:80:19: note: The address of local variable 'arr' might be accessed at non-zero index.
+src/scale.c:81:19: note: The address of local variable 'arr' might be accessed at non-zero index.
             (*arr)[i] = hx711_get_value(sc->_hx);
                   ^
 nofile:0:0: information: Unmatched suppression: unusedFunction [unmatchedSuppression]
