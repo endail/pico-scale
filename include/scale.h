@@ -48,7 +48,7 @@ typedef struct {
     strategy_type_t strat;
     read_type_t read;
     size_t samples;
-    uint64_t timeout; //us
+    uint timeout; //us
 } scale_options_t;
 
 static const scale_options_t SCALE_DEFAULT_OPTIONS = {
@@ -129,7 +129,7 @@ bool scale_get_values_timeout(
     scale_t* const sc,
     int32_t** const arr,
     size_t* const len,
-    const uint64_t* const timeout);
+    const uint timeout);
 
 /**
  * @brief Obtains a value from the scale according to the given options. Returns
