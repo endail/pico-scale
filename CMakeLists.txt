@@ -88,6 +88,6 @@ target_sources(pico-scale
 # when running the tests in this project, build the main test exe
 # side effect is that no tests are run, but we don't care; just
 # want to build the test program
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-        add_subdirectory(tests)
-endif()
+#if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+add_subdirectory(tests)
+# endif()
