@@ -1,6 +1,6 @@
 // MIT License
 // 
-// Copyright (c) 2022 Daniel Robertson
+// Copyright (c) 2023 Daniel Robertson
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -91,8 +91,7 @@ int main() {
         &hx711_noblock_program,
         &hx711_noblock_program_init);
 
-    hx711_set_power(&hx, hx711_pwr_up);
-    hx711_set_gain(&hx, hx711_gain_128);
+    hx711_power_up(&hx, hx711_gain_128);
     hx711_wait_settle(hxRate);
 
     scale_init(&sc, &hx, mass_ug, 1, 0);
