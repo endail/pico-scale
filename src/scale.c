@@ -20,24 +20,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/scale.h"
-#include "../include/util.h"
-#include "pico/time.h"
 #include <assert.h>
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdlib.h>
+#include "pico/time.h"
+#include "../include/scale.h"
+#include "../include/scale_adaptor.h"
+#include "../include/util.h"
 
 void scale_init(
     scale_t* const sc,
-    hx711_t* const hx,
+    scale_adaptor_t* const adaptor,
     const mass_unit_t unit,
     const int32_t ref_unit,
     const int32_t offset) {
 
         assert(sc != NULL);
-        assert(hx != NULL);
+        assert(adaptor != NULL);
         assert(ref_unit != 0);
 
-        sc->_hx = hx;
+        sc->_adaptor = adaptor;
         sc->unit = unit;
         sc->ref_unit = ref_unit;
         sc->offset = offset;
@@ -69,7 +72,7 @@ bool scale_get_values_samples(
     const size_t len) {
 
         assert(sc != NULL);
-        assert(sc->_hx != NULL);
+        assert(sc->_adaptor != NULL);
         assert(arr != NULL);
 
         //if the allocation fails, return false
@@ -78,7 +81,9 @@ bool scale_get_values_samples(
         }
 
         for(size_t i = 0; i < len; ++i) {
-            (*arr)[i] = hx711_get_value(sc->_hx);
+            sc->_adaptor->get_value(
+                sc->_adaptor,
+                &(*arr)[i]);
         }
 
         return true;
@@ -92,11 +97,11 @@ bool scale_get_values_timeout(
     const uint timeout) {
 
         assert(sc != NULL);
-        assert(sc->_hx != NULL);
+        assert(sc->_adaptor != NULL);
         assert(arr != NULL);
         assert(len != NULL);
 
-        int32_t val; //temporary value from the HX711
+        int32_t val; //temporary value from the adaptor
         int32_t* memblock; //ptr to the memblock
         size_t elemCount; //number of elements in the block
 
@@ -120,15 +125,15 @@ bool scale_get_values_timeout(
          * no reallocations should occur. The obvious tradeoff is
          * the excess memory.
          */
-        elemCount = hx711_get_rate_sps(hx711_rate_80);
+        //elemCount = hx711_get_rate_sps(hx711_rate_80);
 
-        if((*arr = malloc(elemCount * sizeof(int32_t))) == NULL) {
-            return false;
-        }
+        //if((*arr = malloc(elemCount * sizeof(int32_t))) == NULL) {
+        //    return false;
+        //}
 
         *len = 0;
 
-        while(hx711_get_value_timeout(sc->_hx, timeout, &val)) {
+        while(sc->_adaptor->get_value_timeout(sc->_adaptor, &val, timeout)) {
 
             //new value available, so increase the counter
             //this is the actual number of values obtained

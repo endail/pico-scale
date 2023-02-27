@@ -24,61 +24,44 @@
 #include <stdio.h>
 #include <string.h>
 #include "pico/stdio.h"
+#include "../include/hx711_scale_adaptor.h"
 #include "../include/scale.h"
-#include "../extern/hx711-pico-c/include/hx711_noblock.pio.h"
 
 int main(void) {
 
     stdio_init_all();
 
-    // SET THESE TO THE GPIO PINS CONNECTED TO THE
-    // HX711's CLOCK AND DATA PINS
-    // PINOUT REFERENCE: https://learn.adafruit.com/assets/99339
-    const uint clkPin = 14; // GP14, PAD19
-    const uint datPin = 15; // GP15, PAD20
-
-    // CALIBRATE YOUR SCALE TO OBTAIN THESE VALUES
-    // https://github.com/endail/pico-scale#how-to-calibrate
     const mass_unit_t unit = mass_g;
     const int32_t refUnit = 432;
     const int32_t offset = -367539;
 
     hx711_t hx;
+    hx711_config_t hxcfg;
+    hx711_scale_adaptor_t hxsa;
+
     scale_t sc;
     scale_options_t opt = SCALE_DEFAULT_OPTIONS;
-    mass_t mass;
-    mass_t max;
-    mass_t min;
+
     char buff[MASS_TO_STRING_BUFF_SIZE];
 
-    //1. init the hx711 struct
-    hx711_init(
-        &hx,
-        clkPin,
-        datPin,
-        pio0,
-        &hx711_noblock_program,
-        &hx711_noblock_program_init);
+    hx711_get_default_config(&hxcfg);
+    hxcfg.clock_pin = 14;
+    hxcfg.data_pin = 15;
 
-    //2. power up the hx711
+    hx711_init(&hx, &hxcfg);
     hx711_power_up(&hx, hx711_gain_128);
-
-    //3. [OPTIONAL] set gain and save it to the HX711
-    //chip by powering down then back up
-    hx711_set_gain(&hx, hx711_gain_128);
-    hx711_power_up(&hx, hx711_gain_128);
-    hx711_wait_power_down();
-    hx711_power_up(&hx, hx711_gain_128);
-
-    //4. pause to allow the readings to settle based on the
-    //sample rate of the chip
     hx711_wait_settle(hx711_rate_80);
 
-    //at this point, the hx711 can reliably produce values
-    //with hx711_get_value or hx711_get_value_timeout
+    hx711_scale_adaptor_init(
+        &hxsa,
+        &hx);
 
-    //5. init the scale
-    scale_init(&sc, &hx, unit, refUnit, offset);
+    scale_init(
+        &sc,
+        hx711_scale_adaptor_get_base(&hxsa),
+        unit,
+        refUnit,
+        offset);
 
     //6. spend 10 seconds obtaining as many samples as
     //possible to zero (aka. tare) the scale
@@ -91,6 +74,10 @@ int main(void) {
     else {
         printf("Scale failed to zero\n");
     }
+
+    mass_t mass;
+    mass_t max;
+    mass_t min;
 
     //7. change to spending 250 milliseconds obtaining
     //as many samples as possible

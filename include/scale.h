@@ -20,15 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef _SCALE_H_4B64A868_05B1_4F4C_99CF_E75ED9BAED50
-#define _SCALE_H_4B64A868_05B1_4F4C_99CF_E75ED9BAED50
+#ifndef SCALE_H_4B64A868_05B1_4F4C_99CF_E75ED9BAED50
+#define SCALE_H_4B64A868_05B1_4F4C_99CF_E75ED9BAED50
 
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include "pico/time.h"
-#include "../extern/hx711-pico-c/include/hx711.h"
 #include "mass.h"
+#include "scale_adaptor.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,7 +64,7 @@ typedef struct {
     int32_t ref_unit;
     int32_t offset;
 
-    hx711_t* _hx;
+    scale_adaptor_t* _adaptor;
 
 } scale_t;
 
@@ -79,7 +79,7 @@ typedef struct {
  */
 void scale_init(
     scale_t* const sc,
-    hx711_t* const hx,
+    scale_adaptor_t* const adaptor,
     const mass_unit_t unit,
     const int32_t ref_unit,
     const int32_t offset);

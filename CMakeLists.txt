@@ -31,7 +31,7 @@ cmake_minimum_required(VERSION 3.12)
 include(pico_sdk_import.cmake)
 
 project(pico-scale
-        VERSION 0.0.1
+        VERSION 2.0.0
         DESCRIPTION "Example use of hx711-pico-c library as a scale application"
         HOMEPAGE_URL "https://github.com/endail/pico-scale"
         LANGUAGES C CXX ASM
@@ -62,8 +62,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 
 # check for minimum pico sdk version
-if(PICO_SDK_VERSION_STRING VERSION_LESS "1.3.0")
-        message(FATAL_ERROR "pico-scale requires Raspberry Pi Pico SDK version 1.3.0 (or later). Your version is ${PICO_SDK_VERSION_STRING}")
+if(PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
+        message(FATAL_ERROR "pico-scale requires Raspberry Pi Pico SDK version 1.5.0 (or later). Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
 # include hx711 lib
@@ -83,6 +83,8 @@ target_sources(pico-scale
         ${CMAKE_CURRENT_LIST_DIR}/src/mass.c
         ${CMAKE_CURRENT_LIST_DIR}/src/scale.c
         ${CMAKE_CURRENT_LIST_DIR}/src/util.c
+        ${CMAKE_CURRENT_LIST_DIR}/src/scale_adaptor.c
+        ${CMAKE_CURRENT_LIST_DIR}/src/hx711_scale_adaptor.c
         )
 
 # when running the tests in this project, build the main test exe

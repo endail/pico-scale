@@ -51,16 +51,16 @@ pico_enable_stdio_uart(main 1)
 pico_add_extra_outputs(main)
 
 
-add_executable(calibration
-        ${CMAKE_CURRENT_LIST_DIR}/calibration.c
-        )
-
-target_link_libraries(calibration
-        pico-scale
-        pico_stdlib
-        pico_stdio
-        )
-
-pico_enable_stdio_usb(calibration 1)
-pico_enable_stdio_uart(calibration 1)
-pico_add_extra_outputs(calibration)
+#add_executable(calibration
+#        ${CMAKE_CURRENT_LIST_DIR}/calibration.c
+#        )
+#
+#target_link_libraries(calibration
+#        pico-scale
+#        pico_stdlib
+#        pico_stdio
+#        )
+#
+#pico_enable_stdio_usb(calibration 1)
+#pico_enable_stdio_uart(calibration 1)
+#pico_add_extra_outputs(calibration)
