@@ -124,7 +124,7 @@ How to Use the HX711 as a Scale</h1>
 <div class="line">int32_t refUnit = -432;</div>
 <div class="line">int32_t offset = -367539;</div>
 <div class="line"> </div>
-<div class="line"><a class="code" href="scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4">scale_init</a>(</div>
+<div class="line"><a class="code" href="scale_8h.html#abb8d809b207914282a53c53099c74d37">scale_init</a>(</div>
 <div class="line">    &amp;sc,</div>
 <div class="line">    &amp;hx, <span class="comment">// pass a pointer to the hx711_t</span></div>
 <div class="line">    scaleUnit,</div>
@@ -202,9 +202,9 @@ How to Use the HX711 as a Scale</h1>
 <div class="ttc" id="amass_8h_html_adcc94737143cdd25beb95b665c04e6c5"><div class="ttname"><a href="mass_8h.html#adcc94737143cdd25beb95b665c04e6c5">mass_get_value</a></div><div class="ttdeci">static void mass_get_value(const mass_t *const m, double *const val)</div><div class="ttdoc">Sets val to the value representing the mass_t according to its unt.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00145">mass.h:145</a></div></div>
 <div class="ttc" id="amass_8h_html_ae8be3e5bc64f2ae5441d61c5ee080a8f"><div class="ttname"><a href="mass_8h.html#ae8be3e5bc64f2ae5441d61c5ee080a8f">MASS_TO_STRING_BUFF_SIZE</a></div><div class="ttdeci">static const size_t MASS_TO_STRING_BUFF_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00063">mass.h:63</a></div></div>
 <div class="ttc" id="ascale_8h_html_a0ee40743499233ab7ded69bc522adcf3"><div class="ttname"><a href="scale_8h.html#a0ee40743499233ab7ded69bc522adcf3">SCALE_DEFAULT_OPTIONS</a></div><div class="ttdeci">static const scale_options_t SCALE_DEFAULT_OPTIONS</div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00054">scale.h:54</a></div></div>
-<div class="ttc" id="ascale_8h_html_a2856aa7de7bc3367436768b16c7635d2"><div class="ttname"><a href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a></div><div class="ttdeci">bool scale_zero(scale_t *const sc, const scale_options_t *const opt)</div><div class="ttdoc">Zeros the scale (tare) by adjusting its offset from 0 according to the given options....</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00226">scale.c:226</a></div></div>
-<div class="ttc" id="ascale_8h_html_a3e40634ba10306170af7c5efd6763731"><div class="ttname"><a href="scale_8h.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a></div><div class="ttdeci">bool scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a weight from the scale according to the given options. Returns true if the operation succeed...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00251">scale.c:251</a></div></div>
-<div class="ttc" id="ascale_8h_html_ad23bc7d5d57a3c196dffb60866088bb4"><div class="ttname"><a href="scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4">scale_init</a></div><div class="ttdeci">void scale_init(scale_t *const sc, hx711_t *const hx, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset)</div><div class="ttdoc">Initialise the scale with a hx711_t.</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00029">scale.c:29</a></div></div>
+<div class="ttc" id="ascale_8h_html_a2856aa7de7bc3367436768b16c7635d2"><div class="ttname"><a href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a></div><div class="ttdeci">bool scale_zero(scale_t *const sc, const scale_options_t *const opt)</div><div class="ttdoc">Zeros the scale (tare) by adjusting its offset from 0 according to the given options....</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00231">scale.c:231</a></div></div>
+<div class="ttc" id="ascale_8h_html_a3e40634ba10306170af7c5efd6763731"><div class="ttname"><a href="scale_8h.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a></div><div class="ttdeci">bool scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a weight from the scale according to the given options. Returns true if the operation succeed...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00256">scale.c:256</a></div></div>
+<div class="ttc" id="ascale_8h_html_abb8d809b207914282a53c53099c74d37"><div class="ttname"><a href="scale_8h.html#abb8d809b207914282a53c53099c74d37">scale_init</a></div><div class="ttdeci">void scale_init(scale_t *const sc, scale_adaptor_t *const adaptor, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset)</div><div class="ttdoc">Initialise the scale with a hx711_t.</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00032">scale.c:32</a></div></div>
 <div class="ttc" id="astructmass__t_html"><div class="ttname"><a href="structmass__t.html">mass_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00101">mass.h:101</a></div></div>
 <div class="ttc" id="astructscale__options__t_html"><div class="ttname"><a href="structscale__options__t.html">scale_options_t</a></div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00047">scale.h:47</a></div></div>
 <div class="ttc" id="astructscale__t_html"><div class="ttname"><a href="structscale__t.html">scale_t</a></div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00061">scale.h:61</a></div></div>
@@ -237,7 +237,7 @@ FAQ</h1>
 <div class="fragment"><div class="line"><span class="comment">// 1. setting the scale_t</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// when you initialise the scale</span></div>
-<div class="line"><a class="code" href="scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4">scale_init</a>(</div>
+<div class="line"><a class="code" href="scale_8h.html#abb8d809b207914282a53c53099c74d37">scale_init</a>(</div>
 <div class="line">    &amp;sc,</div>
 <div class="line">    &amp;hx,</div>
 <div class="line">    <a class="code" href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27a0ce798200bf70bb546af204a946c1eca">mass_imp_ton</a>, <span class="comment">//change the scaleUnit to your chosen mass_unit_t</span></div>
@@ -302,7 +302,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Feb 25 2023 12:15:16 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Feb 27 2023 12:47:55 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -12,7 +12,7 @@ var scale_8h =
     ] ],
     [ "scale_get_values_samples", "scale_8h.html#aeb5b70cbd9088a161fae69e6da0b6405", null ],
     [ "scale_get_values_timeout", "scale_8h.html#ac2665d12de82f642780392c90994f04e", null ],
-    [ "scale_init", "scale_8h.html#ad23bc7d5d57a3c196dffb60866088bb4", null ],
+    [ "scale_init", "scale_8h.html#abb8d809b207914282a53c53099c74d37", null ],
     [ "scale_normalise", "scale_8h.html#ad36a1aada9051db90926f7092df307fd", null ],
     [ "scale_read", "scale_8h.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1", null ],
     [ "scale_weight", "scale_8h.html#a3e40634ba10306170af7c5efd6763731", null ],

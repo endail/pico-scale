@@ -1,10 +1,26 @@
 var searchData=
 [
-  ['ug_64',['ug',['../structmass__t.html#a4de5f370df4195f162c26b42cc7c4fce',1,'mass_t']]],
-  ['unit_65',['unit',['../structmass__t.html#ad9bdecb4a01c302484036f4ea2d2abc9',1,'mass_t::unit()'],['../structscale__t.html#aac67f2643900b076bd2d3c952c4af18b',1,'scale_t::unit()']]],
-  ['util_2ec_66',['util.c',['../util_8c.html',1,'']]],
-  ['util_2eh_67',['util.h',['../util_8h.html',1,'']]],
-  ['util_5f_5fmedian_5fcompare_5ffunc_68',['util__median_compare_func',['../util_8h.html#a18d5c177d04f4b470037fd1113ed1823',1,'util.h']]],
-  ['util_5faverage_69',['util_average',['../util_8h.html#aa501515573fe126dc152ed300ac529ef',1,'util_average(const int32_t *const arr, const size_t len, double *const avg):&#160;util.c'],['../util_8c.html#aa501515573fe126dc152ed300ac529ef',1,'util_average(const int32_t *const arr, const size_t len, double *const avg):&#160;util.c']]],
-  ['util_5fmedian_70',['util_median',['../util_8h.html#a3af8347b8bd848e2b66cb7cb34d7efd5',1,'util_median(int32_t *const arr, const size_t len, double *const med):&#160;util.c'],['../util_8c.html#a3af8347b8bd848e2b66cb7cb34d7efd5',1,'util_median(int32_t *const arr, const size_t len, double *const med):&#160;util.c']]]
+  ['samples_58',['samples',['../structscale__options__t.html#a63b4af268849d527995864d79dcfdc30',1,'scale_options_t']]],
+  ['scale_2ec_59',['scale.c',['../scale_8c.html',1,'']]],
+  ['scale_2eh_60',['scale.h',['../scale_8h.html',1,'']]],
+  ['scale_5fadaptor_61',['scale_adaptor',['../structscale__adaptor.html',1,'']]],
+  ['scale_5fadaptor_2ec_62',['scale_adaptor.c',['../scale__adaptor_8c.html',1,'']]],
+  ['scale_5fadaptor_2eh_63',['scale_adaptor.h',['../scale__adaptor_8h.html',1,'']]],
+  ['scale_5fadaptor_5fget_5fdata_64',['scale_adaptor_get_data',['../scale__adaptor_8c.html#a185569d43c2a3ee7ace913ebe432fb55',1,'scale_adaptor_get_data(scale_adaptor_t *const sa):&#160;scale_adaptor.c'],['../scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55',1,'scale_adaptor_get_data(scale_adaptor_t *const sa):&#160;scale_adaptor.c']]],
+  ['scale_5fadaptor_5finit_65',['scale_adaptor_init',['../scale__adaptor_8h.html#af6d5bf98ab913e1caae7e9c882ab3919',1,'scale_adaptor_init(scale_adaptor_t *const sa, void *data):&#160;scale_adaptor.c'],['../scale__adaptor_8c.html#af6d5bf98ab913e1caae7e9c882ab3919',1,'scale_adaptor_init(scale_adaptor_t *const sa, void *data):&#160;scale_adaptor.c']]],
+  ['scale_5fadaptor_5ft_66',['scale_adaptor_t',['../scale__adaptor_8h.html#a71c384a07c57bd2d6995ee092b3d06da',1,'scale_adaptor.h']]],
+  ['scale_5fdefault_5foptions_67',['SCALE_DEFAULT_OPTIONS',['../scale_8h.html#a0ee40743499233ab7ded69bc522adcf3',1,'scale.h']]],
+  ['scale_5fget_5fvalues_5fsamples_68',['scale_get_values_samples',['../scale_8h.html#aeb5b70cbd9088a161fae69e6da0b6405',1,'scale_get_values_samples(scale_t *const sc, int32_t **const arr, const size_t len):&#160;scale.c'],['../scale_8c.html#aeb5b70cbd9088a161fae69e6da0b6405',1,'scale_get_values_samples(scale_t *const sc, int32_t **const arr, const size_t len):&#160;scale.c']]],
+  ['scale_5fget_5fvalues_5ftimeout_69',['scale_get_values_timeout',['../scale_8h.html#ac2665d12de82f642780392c90994f04e',1,'scale_get_values_timeout(scale_t *const sc, int32_t **const arr, size_t *const len, const uint timeout):&#160;scale.c'],['../scale_8c.html#ac2665d12de82f642780392c90994f04e',1,'scale_get_values_timeout(scale_t *const sc, int32_t **const arr, size_t *const len, const uint timeout):&#160;scale.c']]],
+  ['scale_5finit_70',['scale_init',['../scale_8h.html#abb8d809b207914282a53c53099c74d37',1,'scale_init(scale_t *const sc, scale_adaptor_t *const adaptor, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset):&#160;scale.c'],['../scale_8c.html#abb8d809b207914282a53c53099c74d37',1,'scale_init(scale_t *const sc, scale_adaptor_t *const adaptor, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset):&#160;scale.c']]],
+  ['scale_5fnormalise_71',['scale_normalise',['../scale_8h.html#ad36a1aada9051db90926f7092df307fd',1,'scale_normalise(const scale_t *const sc, const double *const raw, double *const normalised):&#160;scale.c'],['../scale_8c.html#ad36a1aada9051db90926f7092df307fd',1,'scale_normalise(const scale_t *const sc, const double *const raw, double *const normalised):&#160;scale.c']]],
+  ['scale_5foptions_5ft_72',['scale_options_t',['../structscale__options__t.html',1,'']]],
+  ['scale_5fread_73',['scale_read',['../scale_8h.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1',1,'scale_read(scale_t *const sc, double *const val, const scale_options_t *const opt):&#160;scale.c'],['../scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1',1,'scale_read(scale_t *const sc, double *const val, const scale_options_t *const opt):&#160;scale.c']]],
+  ['scale_5ft_74',['scale_t',['../structscale__t.html',1,'']]],
+  ['scale_5fweight_75',['scale_weight',['../scale_8h.html#a3e40634ba10306170af7c5efd6763731',1,'scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt):&#160;scale.c'],['../scale_8c.html#a3e40634ba10306170af7c5efd6763731',1,'scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt):&#160;scale.c']]],
+  ['scale_5fzero_76',['scale_zero',['../scale_8h.html#a2856aa7de7bc3367436768b16c7635d2',1,'scale_zero(scale_t *const sc, const scale_options_t *const opt):&#160;scale.c'],['../scale_8c.html#a2856aa7de7bc3367436768b16c7635d2',1,'scale_zero(scale_t *const sc, const scale_options_t *const opt):&#160;scale.c']]],
+  ['strat_77',['strat',['../structscale__options__t.html#a3baddb950b0633eb3ad9fc9361777eba',1,'scale_options_t']]],
+  ['strategy_5ftype_5fsamples_78',['strategy_type_samples',['../scale_8h.html#a4e85561d4c7c106c52380fa474788662aced884cf0ed874e1fa02fcb446f30aab',1,'scale.h']]],
+  ['strategy_5ftype_5ft_79',['strategy_type_t',['../scale_8h.html#a4e85561d4c7c106c52380fa474788662',1,'scale.h']]],
+  ['strategy_5ftype_5ftime_80',['strategy_type_time',['../scale_8h.html#a4e85561d4c7c106c52380fa474788662ad8c5b94448e44f7b095f5b5d8ead5bce',1,'scale.h']]]
 ];

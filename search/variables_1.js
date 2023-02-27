@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mass_5fnames_112',['MASS_NAMES',['../mass_8h.html#aa0677f33a60f442b08489ff4f50f7b30',1,'mass.h']]],
-  ['mass_5fratios_113',['MASS_RATIOS',['../mass_8h.html#a14b30ec245f7f9b092a5d520e9078af0',1,'mass.h']]],
-  ['mass_5fto_5fstring_5fbuff_5fsize_114',['MASS_TO_STRING_BUFF_SIZE',['../mass_8h.html#ae8be3e5bc64f2ae5441d61c5ee080a8f',1,'mass.h']]]
+  ['get_5fvalue_145',['get_value',['../structscale__adaptor.html#a16eac6449ca8a97ab038991cc9b92d8c',1,'scale_adaptor']]],
+  ['get_5fvalue_5ftimeout_146',['get_value_timeout',['../structscale__adaptor.html#ac630f7fc5ef6f81174db427e8701805f',1,'scale_adaptor']]]
 ];

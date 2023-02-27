@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['read_116',['read',['../structscale__options__t.html#a8340e5ef6a76006234dc4db81b6348d7',1,'scale_options_t']]],
-  ['ref_5funit_117',['ref_unit',['../structscale__t.html#a8eb5159baefd06abe5738716041d674e',1,'scale_t']]]
+  ['offset_150',['offset',['../structscale__t.html#ad745624cc3dc584a6acc409ef4697e12',1,'scale_t']]]
 ];

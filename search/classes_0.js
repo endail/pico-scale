@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mass_5ft_71',['mass_t',['../structmass__t.html',1,'']]]
+  ['hx711_5fscale_5fadaptor_5ft_89',['hx711_scale_adaptor_t',['../structhx711__scale__adaptor__t.html',1,'']]]
 ];
