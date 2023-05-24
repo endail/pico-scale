@@ -33,12 +33,26 @@ extern "C" {
 
 typedef struct scale_adaptor {
 
+    /**
+     * @brief Arbitrary user data
+     */
     void* _data;
 
+    /**
+     * @brief Function pointer to function
+     * @param sa pointer to scale adaptor
+     * @param value value to be set
+     */
     bool (*get_value)(
         struct scale_adaptor* const sa,
         int32_t* const value);
 
+    /**
+     * @brief Function pointer to function
+     * @param sa pointer to scale adaptor
+     * @param value value to be set
+     * @param timeout timeout in microseconds
+     */
     bool (*get_value_timeout)(
         struct scale_adaptor* const sa,
         int32_t* const value,

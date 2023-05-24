@@ -93,76 +93,41 @@ bool scale_get_values_samples(
 bool scale_get_values_timeout(
     scale_t* const sc,
     int32_t** const arr,
+    const size_t arrlen,
     size_t* const len,
     const uint timeout) {
 
         assert(sc != NULL);
         assert(sc->_adaptor != NULL);
         assert(arr != NULL);
+        assert(arrlen > 0);
         assert(len != NULL);
 
+        //the absolute end time for seeking values (now + timeout)
+        const absolute_time_t end = make_timeout_time_us(timeout);
         int32_t val; //temporary value from the adaptor
-        int32_t* memblock; //ptr to the memblock
-        size_t elemCount; //number of elements in the block
+        int64_t diff; //difference in us from current time to end; updated
 
-        /**
-         * By default, allocate memory for 80 ints. The reasoning
-         * for this is as follows:
-         * 
-         * A "scale" application is likely to need to update at a
-         * rate of once per second or less. So the size of the
-         * allocation can be the same size as the HX711 samples per
-         * second.
-         * 
-         * The HX711 has two rates (excluding when using an external
-         * crystal): 10 and 80 samples per second. But this function
-         * has no information about the rate in use. If the actual
-         * rate is 10 and the allocated size is for 10, then few if
-         * any reallocations should occur. But if the actual rate is
-         * 80 and the allocated size is for 10, at least 8
-         * reallocations would occur. On the other hand, if the
-         * actual rate is 10 and the allocated size is for 80 ints,
-         * no reallocations should occur. The obvious tradeoff is
-         * the excess memory.
-         */
-        //elemCount = hx711_get_rate_sps(hx711_rate_80);
+        for(*len = 0; *len <= arrlen;) {
 
-        //if((*arr = malloc(elemCount * sizeof(int32_t))) == NULL) {
-        //    return false;
-        //}
+            //update the time diff between the end and now
+            diff = absolute_time_diff_us(end, get_absolute_time());
 
-        *len = 0;
-
-        while(sc->_adaptor->get_value_timeout(sc->_adaptor, &val, timeout)) {
-
-            //new value available, so increase the counter
-            //this is the actual number of values obtained
-            ++(*len);
-
-            //check if a reallocation is needed
-            if(*len > elemCount) {
-
-                //when a reallocation is needed, double the space
-                elemCount = elemCount * 2;
-
-                memblock = realloc(
-                    *arr,
-                    elemCount * sizeof(int32_t));
-
-                //if memory allocation fails, return false
-                //existing *arr will still be allocated
-                //but will be freed in caller function
-                if(memblock == NULL) {
-                    return false;
-                }
-
-                //move pointer of new block to *arr
-                *arr = memblock;
-
+            if(diff <= 0) {
+                //timeout reached
+                break;
             }
 
-            //store the value in the array
-            (*arr)[(*len) - 1] = val;
+            if(sc->_adaptor->get_value_timeout(sc->_adaptor, &val, (uint)diff)) {
+
+                //new value available, so increase the counter
+                //this is the actual number of values obtained
+                ++(*len);
+
+                //store the value in the array
+                (*arr)[(*len) - 1] = val;
+
+            }
 
         }
 

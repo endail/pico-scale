@@ -52,9 +52,7 @@ int main(void) {
     hx711_power_up(&hx, hx711_gain_128);
     hx711_wait_settle(hx711_rate_80);
 
-    hx711_scale_adaptor_init(
-        &hxsa,
-        &hx);
+    hx711_scale_adaptor_init(&hxsa, &hx);
 
     scale_init(
         &sc,

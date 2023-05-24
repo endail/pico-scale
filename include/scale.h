@@ -58,11 +58,15 @@ static const scale_options_t SCALE_DEFAULT_OPTIONS = {
     .timeout = 1000000 //1 second
 };
 
+static const size_t SCALE_DEFAULT_BUFFER_SIZE = 80;
+
 typedef struct {
 
     mass_unit_t unit;
     int32_t ref_unit;
     int32_t offset;
+
+    int32_t* _buffer;
 
     scale_adaptor_t* _adaptor;
 
@@ -119,8 +123,9 @@ bool scale_get_values_samples(
  * Returns true if the operation succeeded.
  * 
  * @param sc 
- * @param arr 
- * @param len Will be to the number of samples obtained
+ * @param arr buffer
+ * @param arrlen Size of buffer
+ * @param len Will be set to the number of samples obtained
  * @param timeout Microseconds
  * @return true 
  * @return false 
@@ -128,6 +133,7 @@ bool scale_get_values_samples(
 bool scale_get_values_timeout(
     scale_t* const sc,
     int32_t** const arr,
+    const size_t arrlen,
     size_t* const len,
     const uint timeout);
 
