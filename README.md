@@ -1,5 +1,7 @@
 # pico-scale
 
+## NOTE: DOCUMENTATION IS OLD. REFER TO [tests/main.c](the test code) for an example.
+
 A scale API for a Raspberry Pi Pico (RP2040).
 
 ![resources/hx711_serialout.gif](resources/hx711_serialout.gif)
@@ -19,8 +21,8 @@ git clone --recurse-submodules --remote-submodules https://github.com/endail/pic
 Then `#include` as follows:
 
 ```c
-#include "include/scale.h"
-#include "extern/hx711-pico-c/include/hx711_noblock.pio.h"
+#include "../include/hx711_scale_adaptor.h"
+#include "../include/scale.h"
 ```
 
 Run CTest to build the example and calibration programs. The `.uf2` files you upload to your Pico will be found under `build/tests/`.
@@ -37,8 +39,8 @@ git submodule update --init --remote --recursive
 Then, from your own code, `#include` the relevant files as follows and initialise the hx711:
 
 ```c
+#include "extern/pico-scale/include/hx711_scale_adaptor.h"
 #include "extern/pico-scale/include/scale.h"
-#include "extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h"
 ```
 
 See the explanation [here](https://github.com/endail/hx711-pico-c#custom-pio-programs) for why you need to manually include the PIO program.
