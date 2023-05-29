@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "pico-scale", "index.html", [
-    [ "NOTE: DOCUMENTATION IS OLD. REFER TO [tests/main.c](the test code) for an example.", "index.html#autotoc_md1", null ],
+    [ "NOTE: DOCUMENTATION IS OLD. REFER TO <a href=\"tests/main.c\">the test code</a> for an example", "index.html#autotoc_md1", null ],
     [ "Clone", "index.html#autotoc_md2", [
       [ "Method 1", "index.html#autotoc_md3", null ],
       [ "Method 2", "index.html#autotoc_md4", null ]
