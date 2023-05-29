@@ -20,6 +20,7 @@
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.mergeConfigurations": true,
     "files.associations": {
-        "compare": "cpp"
+        "compare": "cpp",
+        "cmath": "c"
     }
 }

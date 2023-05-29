@@ -55,20 +55,9 @@ void util_median(
     const size_t len,
     double* const med);
 
-static inline int util__median_compare_func(
+int util__median_compare_func(
     const void* a,
-    const void* b) {
-
-        assert(a != NULL);
-        assert(b != NULL);
-
-        const int32_t* restrict const pA = (const int32_t* const)a;
-        const int32_t* restrict const pB = (const int32_t* const)b;
-        
-        //https://stackoverflow.com/a/10996555/570787
-        return (*pA < *pB) ? -1 : (*pA > *pB);
-
-}
+    const void* b);
 
 #ifdef __cplusplus
 }

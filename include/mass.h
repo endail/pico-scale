@@ -23,12 +23,8 @@
 #ifndef MASS_H_62063E22_421F_4578_BAD8_46AF5C66C4CF
 #define MASS_H_62063E22_421F_4578_BAD8_46AF5C66C4CF
 
-#include <assert.h>
-#include <float.h>
-#include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include "pico/types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -84,9 +80,7 @@ typedef enum {
  * @param u 
  * @return const char* const 
  */
-static inline const char* const mass_unit_to_string(const mass_unit_t u) {
-    return MASS_NAMES[(uint)u];
-}
+const char* const mass_unit_to_string(const mass_unit_t u);
 
 /**
  * @brief Returns a pointer to a double with the number of micrograms per unit
@@ -94,9 +88,7 @@ static inline const char* const mass_unit_to_string(const mass_unit_t u) {
  * @param u 
  * @return const double* const 
  */
-static inline const double* const mass_unit_to_ratio(const mass_unit_t u) {
-    return &MASS_RATIOS[(uint)u];
-}
+const double* const mass_unit_to_ratio(const mass_unit_t u);
 
 typedef struct {
     double ug;
@@ -124,17 +116,10 @@ void mass_convert(
  * @param unit 
  * @param val 
  */
-static inline void mass_init(
+void mass_init(
     mass_t* const m,
     const mass_unit_t unit,
-    const double val) {
-
-        assert(m != NULL);
-
-        mass_convert(&val, &m->ug, unit, mass_ug);
-        m->unit = unit;
-
-}
+    const double val);
 
 /**
  * @brief Sets val to the value representing the mass_t according to its unt
@@ -142,16 +127,9 @@ static inline void mass_init(
  * @param m 
  * @param val 
  */
-static inline void mass_get_value(
+void mass_get_value(
     const mass_t* const m,
-    double* const val) {
-
-        assert(m != NULL);
-        assert(val != NULL);
-
-        mass_convert(&m->ug, val, mass_ug, m->unit);
-
-}
+    double* const val);
 
 /**
  * @brief Add lhs to rhs and store result in res
@@ -160,19 +138,10 @@ static inline void mass_get_value(
  * @param rhs 
  * @param res 
  */
-static inline void mass_add(
+void mass_add(
     const mass_t* const lhs,
     const mass_t* const rhs,
-    mass_t* const res) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-        assert(res != NULL);
-
-        res->ug = lhs->ug + rhs->ug;
-        res->unit = lhs->unit;
-
-}
+    mass_t* const res);
 
 /**
  * @brief Substract rhs from lhs and store result in res
@@ -181,19 +150,10 @@ static inline void mass_add(
  * @param rhs 
  * @param res 
  */
-static inline void mass_sub(
+void mass_sub(
     const mass_t* const lhs,
     const mass_t* const rhs,
-    mass_t* const res) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-        assert(res != NULL);
-
-        res->ug = lhs->ug - rhs->ug;
-        res->unit = lhs->unit;
-
-}
+    mass_t* const res);
 
 /**
  * @brief Multiply lhs by rhs and store result in res
@@ -202,19 +162,10 @@ static inline void mass_sub(
  * @param rhs 
  * @param res 
  */
-static inline void mass_mul(
+void mass_mul(
     const mass_t* const lhs,
     const mass_t* const rhs,
-    mass_t* const res) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-        assert(res != NULL);
-
-        res->ug = lhs->ug * rhs->ug;
-        res->unit = lhs->unit;
-
-}
+    mass_t* const res);
 
 /**
  * @brief Divide lhs by rhs and store result in res, returns false if rhs is 0
@@ -225,25 +176,10 @@ static inline void mass_mul(
  * @return true 
  * @return false 
  */
-static inline bool mass_div(
+bool mass_div(
     const mass_t* const lhs,
     const mass_t* const rhs,
-    mass_t* const res) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-        assert(res != NULL);
-
-        //if ~0; protect against div / 0
-        if(fabs(rhs->ug) < DBL_EPSILON) {
-            return false;
-        }
-
-        res->ug = lhs->ug / rhs->ug;
-        res->unit = lhs->unit;
-        return true;
-
-}
+    mass_t* const res);
 
 /**
  * @brief Add rhs to self
@@ -251,11 +187,9 @@ static inline bool mass_div(
  * @param self 
  * @param rhs 
  */
-static inline void mass_addeq(
+void mass_addeq(
     mass_t* const self,
-    const mass_t* const rhs) {
-        mass_add(self, rhs, self);
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Subtract rhs from self
@@ -263,11 +197,9 @@ static inline void mass_addeq(
  * @param self 
  * @param rhs 
  */
-static inline void mass_subeq(
+void mass_subeq(
     mass_t* const self,
-    const mass_t* const rhs) {
-        mass_sub(self, rhs, self);
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Multiply self by rhs
@@ -275,11 +207,9 @@ static inline void mass_subeq(
  * @param self 
  * @param rhs 
  */
-static inline void mass_muleq(
+void mass_muleq(
     mass_t* const self,
-    const mass_t* const rhs) {
-        mass_mul(self, rhs, self);
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Divide self by rhs, returns false if rhs is 0
@@ -289,11 +219,9 @@ static inline void mass_muleq(
  * @return true 
  * @return false 
  */
-static inline bool mass_diveq(
+bool mass_diveq(
     mass_t* const self,
-    const mass_t* const rhs) {
-        return mass_div(self, rhs, self);
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs equals rhs
@@ -303,17 +231,9 @@ static inline bool mass_diveq(
  * @return true 
  * @return false 
  */
-static inline bool mass_eq(
+bool mass_eq(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        //if ~==; if approx ~0
-        return fabs(lhs->ug - rhs->ug) < DBL_EPSILON;
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs does not equal rhs
@@ -323,16 +243,9 @@ static inline bool mass_eq(
  * @return true 
  * @return false 
  */
-static inline bool mass_neq(
+bool mass_neq(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        return !mass_eq(lhs, rhs);
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs is less than rhs
@@ -342,16 +255,9 @@ static inline bool mass_neq(
  * @return true 
  * @return false 
  */
-static inline bool mass_lt(
+bool mass_lt(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        return lhs->ug < rhs->ug;
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs is greater than rhs
@@ -361,16 +267,9 @@ static inline bool mass_lt(
  * @return true 
  * @return false 
  */
-static inline bool mass_gt(
+bool mass_gt(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        return mass_lt(rhs, lhs);
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs is less than or equal to rhs
@@ -380,16 +279,9 @@ static inline bool mass_gt(
  * @return true 
  * @return false 
  */
-static inline bool mass_lteq(
+bool mass_lteq(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        return !mass_gt(lhs, rhs);
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Returns true if lhs is greater than or equal to rhs
@@ -399,16 +291,9 @@ static inline bool mass_lteq(
  * @return true 
  * @return false 
  */
-static inline bool mass_gteq(
+bool mass_gteq(
     const mass_t* const lhs,
-    const mass_t* const rhs) {
-
-        assert(lhs != NULL);
-        assert(rhs != NULL);
-
-        return !mass_lt(lhs, rhs);
-
-}
+    const mass_t* const rhs);
 
 /**
  * @brief Fills buff with the string representation of the mass_t. eg. "32.4762 mg"

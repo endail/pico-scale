@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 #include <assert.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
