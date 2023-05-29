@@ -1,32 +1,3 @@
-src/scale.c:81:19: warning: The address of local variable 'arr' might be accessed at non-zero index. [objectIndex]
-            (*arr)[i] = hx711_get_value(sc->_hx);
-                  ^
-src/scale.c:196:17: note: Address of variable taken here.
-                &arr,
+src/scale.c:111:17: style: The scope of the variable 'diff' can be reduced. [variableScope]
+        int64_t diff; //difference in us from current time to end; updated
                 ^
-src/scale.c:196:17: note: Calling function 'scale_get_values_samples', 2nd argument '&arr' value is lifetime=arr
-                &arr,
-                ^
-src/scale.c:76:51: note: Assuming condition is Assuming condition is false
-        if((*arr = malloc(len * sizeof(int32_t))) == NULL) {
-                                                  ^
-src/scale.c:81:19: note: The address of local variable 'arr' might be accessed at non-zero index.
-            (*arr)[i] = hx711_get_value(sc->_hx);
-                  ^
-src/scale.c:160:19: warning: The address of local variable 'arr' might be accessed at non-zero index. [objectIndex]
-            (*arr)[(*len) - 1] = val;
-                  ^
-src/scale.c:186:17: note: Address of variable taken here.
-                &arr,
-                ^
-src/scale.c:186:17: note: Calling function 'scale_get_values_timeout', 2nd argument '&arr' value is lifetime=arr
-                &arr,
-                ^
-src/scale.c:125:57: note: Assuming condition is Assuming condition is false
-        if((*arr = malloc(elemCount * sizeof(int32_t))) == NULL) {
-                                                        ^
-src/scale.c:160:19: note: The address of local variable 'arr' might be accessed at non-zero index.
-            (*arr)[(*len) - 1] = val;
-                  ^
-nofile:0:0: information: Unmatched suppression: unusedFunction [unmatchedSuppression]
-
