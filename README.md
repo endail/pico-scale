@@ -1,6 +1,6 @@
 # pico-scale
 
-## NOTE: DOCUMENTATION IS OLD. REFER TO [tests/main.c](the test code) for an example.
+## NOTE: DOCUMENTATION IS OLD. REFER TO [the test code](tests/main.c) for an example
 
 A scale API for a Raspberry Pi Pico (RP2040).
 
