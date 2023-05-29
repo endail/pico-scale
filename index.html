@@ -85,36 +85,38 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">pico-scale </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> A scale API for a Raspberry Pi Pico (RP2040).</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+NOTE: DOCUMENTATION IS OLD. REFER TO [tests/main.c](the test code) for an example.</h1>
+<p>A scale API for a Raspberry Pi Pico (RP2040).</p>
 <p><img src="resources/hx711_serialout.gif" alt="resources/hx711_serialout.gif" class="inline"/></p>
 <p>The .gif above illustrates the <a href="main.c">current example code</a> obtaining data from a HX711 operating at 80 samples per second. Each line shows the current weight calculated from all samples obtained within 250 milliseconds, along with the minimum and maximum weights of the scale since boot. I applied pressure to the load cell to show the change in weight.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Clone</h1>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Method 1</h2>
 <p>If you want to use this repository as-is with the example code, clone the respository and initialise the <code>hx711-pico-c</code> submodule.</p>
 <div class="fragment"><div class="line">git clone --recurse-submodules --remote-submodules https://github.com/endail/pico-scale</div>
 </div><!-- fragment --><p>Then <code>#include</code> as follows:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="scale_8h.html">include/scale.h</a>&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
-<div class="ttc" id="ascale_8h_html"><div class="ttname"><a href="scale_8h.html">scale.h</a></div></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;../include/hx711_scale_adaptor.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;../include/scale.h&quot;</span></div>
 </div><!-- fragment --><p>Run CTest to build the example and calibration programs. The <code>.uf2</code> files you upload to your Pico will be found under <code>build/tests/</code>.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Method 2</h2>
 <p>Alternatively, if you want to use the scale functionality as an API in your own project, add <code>pico-scale</code> as a submodule and then initialise it.</p>
 <div class="fragment"><div class="line">git submodule add https://github.com/endail/pico-scale extern/pico-scale</div>
 <div class="line">git submodule update --init --remote --recursive</div>
 </div><!-- fragment --><p>Then, from your own code, <code>#include</code> the relevant files as follows and initialise the hx711:</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/include/scale.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/extern/hx711-pico-c/include/hx711_noblock.pio.h&quot;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/include/hx711_scale_adaptor.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;extern/pico-scale/include/scale.h&quot;</span></div>
 </div><!-- fragment --><p>See the explanation <a href="https://github.com/endail/hx711-pico-c#custom-pio-programs">here</a> for why you need to manually include the PIO program.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Documentation</h1>
 <p><a href="https://endail.github.io/pico-scale/">https://endail.github.io/pico-scale</a></p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Initialise the HX711</h1>
 <p>You will always need to initialise the HX711 before using it as a scale. See <a href="https://github.com/endail/hx711-pico-c#how-to-use">here</a> for how to do that.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 How to Use the HX711 as a Scale</h1>
 <div class="fragment"><div class="line"><a class="code" href="structscale__t.html">scale_t</a> sc;</div>
 <div class="line"> </div>
@@ -208,7 +210,7 @@ How to Use the HX711 as a Scale</h1>
 <div class="ttc" id="astructmass__t_html"><div class="ttname"><a href="structmass__t.html">mass_t</a></div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00093">mass.h:93</a></div></div>
 <div class="ttc" id="astructscale__options__t_html"><div class="ttname"><a href="structscale__options__t.html">scale_options_t</a></div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00047">scale.h:47</a></div></div>
 <div class="ttc" id="astructscale__t_html"><div class="ttname"><a href="structscale__t.html">scale_t</a></div><div class="ttdef"><b>Definition:</b> <a href="scale_8h_source.html#l00073">scale.h:73</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 How to Calibrate</h1>
 <ol type="1">
 <li>Modify <a href="tests/calibration.c#L68-L73">the calibration program</a> and change the clock and data pins to those connected to the HX711. Also change the rate at which the HX711 operates if needed.</li>
@@ -216,7 +218,7 @@ How to Calibrate</h1>
 <li>Copy <code>calibration.uf2</code> in the <code>build/tests/</code> directory to the Raspberry Pi Pico.</li>
 <li>Open a serial connection to the Pico at a baud rate of 115200 and follow the prompts.</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md9"></a>
 FAQ</h1>
 <p>Q: __"Which mass units are supported?"__</p>
 <p>A: The following <code>mass_unit_t</code>s are available.</p>
@@ -302,7 +304,7 @@ FAQ</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon May 29 2023 13:05:18 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 29 2023 13:10:18 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

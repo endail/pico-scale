@@ -25,15 +25,16 @@
 var NAVTREE =
 [
   [ "pico-scale", "index.html", [
-    [ "Clone", "index.html#autotoc_md1", [
-      [ "Method 1", "index.html#autotoc_md2", null ],
-      [ "Method 2", "index.html#autotoc_md3", null ]
+    [ "NOTE: DOCUMENTATION IS OLD. REFER TO [tests/main.c](the test code) for an example.", "index.html#autotoc_md1", null ],
+    [ "Clone", "index.html#autotoc_md2", [
+      [ "Method 1", "index.html#autotoc_md3", null ],
+      [ "Method 2", "index.html#autotoc_md4", null ]
     ] ],
-    [ "Documentation", "index.html#autotoc_md4", null ],
-    [ "Initialise the HX711", "index.html#autotoc_md5", null ],
-    [ "How to Use the HX711 as a Scale", "index.html#autotoc_md6", null ],
-    [ "How to Calibrate", "index.html#autotoc_md7", null ],
-    [ "FAQ", "index.html#autotoc_md8", null ],
+    [ "Documentation", "index.html#autotoc_md5", null ],
+    [ "Initialise the HX711", "index.html#autotoc_md6", null ],
+    [ "How to Use the HX711 as a Scale", "index.html#autotoc_md7", null ],
+    [ "How to Calibrate", "index.html#autotoc_md8", null ],
+    [ "FAQ", "index.html#autotoc_md9", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
