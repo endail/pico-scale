@@ -27,7 +27,7 @@
 #include "../extern/hx711-pico-c/include/common.h"
 #include "../include/hx711_scale_adaptor.h"
 
-void hx711_scale_adaptor_init(
+bool hx711_scale_adaptor_init(
     hx711_scale_adaptor_t* const hxa,
     hx711_t* const hx) {
 
@@ -39,6 +39,8 @@ void hx711_scale_adaptor_init(
         scale_adaptor_init(&hxa->_sa, hxa);
         hxa->_sa.get_value = hx711_scale_adaptor_get_value;
         hxa->_sa.get_value_timeout = hx711_scale_adaptor_get_value_timeout;
+
+        return true;
 
 }
 

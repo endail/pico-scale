@@ -60,7 +60,7 @@ typedef struct scale_adaptor {
 
 } scale_adaptor_t;
 
-void scale_adaptor_init(
+bool scale_adaptor_init(
     scale_adaptor_t* const sa,
     void* data);
 

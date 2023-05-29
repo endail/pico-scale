@@ -49,27 +49,32 @@ typedef struct {
     read_type_t read;
     size_t samples;
     uint timeout; //us
+    int32_t* buffer; //read buffer
+    size_t bufflen; //read buffer length
 } scale_options_t;
 
 static const scale_options_t SCALE_DEFAULT_OPTIONS = {
     .strat = strategy_type_samples,
     .read = read_type_median,
     .samples = 3, //3 samples
-    .timeout = 1000000 //1 second
+    .timeout = 1000000, //1 second
+    .buffer = NULL,
+    .bufflen = 0
 };
 
-static const size_t SCALE_DEFAULT_BUFFER_SIZE = 80;
+/**
+ * @brief Fill options will default values
+ * 
+ * @param opt 
+ */
+void scale_options_get_default(
+    scale_options_t* const opt);
 
 typedef struct {
-
     mass_unit_t unit;
     int32_t ref_unit;
     int32_t offset;
-
-    int32_t* _buffer;
-
     scale_adaptor_t* _adaptor;
-
 } scale_t;
 
 /**
@@ -109,13 +114,13 @@ bool scale_normalise(
  * 
  * @param sc 
  * @param arr 
- * @param len 
- * @return true 
- * @return false 
+ * @param len
+ * @return true
+ * @return false
  */
 bool scale_get_values_samples(
     scale_t* const sc,
-    int32_t** const arr,
+    int32_t* const arr,
     const size_t len);
 
 /**
@@ -127,12 +132,12 @@ bool scale_get_values_samples(
  * @param arrlen Size of buffer
  * @param len Will be set to the number of samples obtained
  * @param timeout Microseconds
- * @return true 
- * @return false 
+ * @return true
+ * @return false
  */
 bool scale_get_values_timeout(
     scale_t* const sc,
-    int32_t** const arr,
+    int32_t* const arr,
     const size_t arrlen,
     size_t* const len,
     const uint timeout);

@@ -38,7 +38,7 @@ typedef struct {
     scale_adaptor_t _sa;
 } hx711_scale_adaptor_t;
 
-void hx711_scale_adaptor_init(
+bool hx711_scale_adaptor_init(
     hx711_scale_adaptor_t* const hxa,
     hx711_t* const hx);
 

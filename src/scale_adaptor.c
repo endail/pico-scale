@@ -24,11 +24,12 @@
 #include <stddef.h>
 #include "../include/scale_adaptor.h"
 
-void scale_adaptor_init(
+bool scale_adaptor_init(
     scale_adaptor_t* const sa,
     void* data) {
         assert(sa != NULL);
         sa->_data = data;
+        return true;
 }
 
 void* scale_adaptor_get_data(

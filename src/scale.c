@@ -29,6 +29,12 @@
 #include "../include/scale_adaptor.h"
 #include "../include/util.h"
 
+void scale_options_get_default(
+    scale_options_t* const opt) {
+        assert(opt != NULL);
+        *opt = SCALE_DEFAULT_OPTIONS;
+}
+
 void scale_init(
     scale_t* const sc,
     scale_adaptor_t* const adaptor,
@@ -68,22 +74,17 @@ bool scale_normalise(
 
 bool scale_get_values_samples(
     scale_t* const sc,
-    int32_t** const arr,
+    int32_t* const arr,
     const size_t len) {
 
         assert(sc != NULL);
         assert(sc->_adaptor != NULL);
         assert(arr != NULL);
 
-        //if the allocation fails, return false
-        if((*arr = malloc(len * sizeof(int32_t))) == NULL) {
-            return false;
-        }
-
         for(size_t i = 0; i < len; ++i) {
-            sc->_adaptor->get_value(
-                sc->_adaptor,
-                &(*arr)[i]);
+            if(!sc->_adaptor->get_value(sc->_adaptor, &(arr[i]))) {
+                return false;
+            }
         }
 
         return true;
@@ -92,7 +93,7 @@ bool scale_get_values_samples(
 
 bool scale_get_values_timeout(
     scale_t* const sc,
-    int32_t** const arr,
+    int32_t* const arr,
     const size_t arrlen,
     size_t* const len,
     const uint timeout) {
@@ -108,7 +109,15 @@ bool scale_get_values_timeout(
         int32_t val; //temporary value from the adaptor
         int64_t diff; //difference in us from current time to end; updated
 
-        for(*len = 0; *len <= arrlen;) {
+        //reset len to 0
+        *len = 0;
+
+        for(;;) {
+
+            if(*len >= arrlen) {
+                //no more room left
+                break;
+            }
 
             //update the time diff between the end and now
             diff = absolute_time_diff_us(end, get_absolute_time());
@@ -125,13 +134,15 @@ bool scale_get_values_timeout(
                 ++(*len);
 
                 //store the value in the array
-                (*arr)[(*len) - 1] = val;
+                arr[(*len) - 1] = val;
 
+            }
+            else {
+                return false;
             }
 
         }
 
-        //no errors occurred, so return true
         return true;
 
 }
@@ -145,50 +156,46 @@ bool scale_read(
         assert(val != NULL);
         assert(opt != NULL);
 
-        int32_t* arr = NULL;
-        size_t len = 0;
+        size_t len;
         bool ok = false; //assume error
 
         switch(opt->strat) {
-        case strategy_type_time:
-            ok = scale_get_values_timeout(
-                sc,
-                &arr,
-                &len,
-                opt->timeout);
-            break;
+            case strategy_type_time:
+                ok = scale_get_values_timeout(
+                    sc,
+                    opt->buffer,
+                    opt->bufflen,
+                    &len,
+                    opt->timeout);
+                break;
 
-        case strategy_type_samples:
-        default:
-            len = opt->samples;
-            ok = scale_get_values_samples(
-                sc,
-                &arr,
-                len);
-            break;
+            case strategy_type_samples:
+            default:
+                assert(opt->bufflen >= opt->samples);
+                len = opt->samples;
+                ok = scale_get_values_samples(
+                    sc,
+                    opt->buffer,
+                    len);
+                break;
         }
 
-        //if an error occurred or no samples obtained
-        //deallocate any memory and then return false
-        if(!ok || len == 0) {
-            free(arr);
+        //exit early if fail
+        if(!ok) {
             return false;
         }
 
         switch(opt->read) {
-        case read_type_average:
-            util_average(arr, len, val);
-            break;
+            case read_type_average:
+                util_average(opt->buffer, len, val);
+                break;
 
-        case read_type_median:
-        default:
-            util_median(arr, len, val);
-            break;
+            case read_type_median:
+            default:
+                util_median(opt->buffer, len, val);
+                break;
         }
 
-        //at this point, statistical func is done
-        //so deallocate and return true
-        free(arr);
         return true;
 
 }
