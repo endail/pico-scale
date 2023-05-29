@@ -111,20 +111,21 @@ $(document).ready(function(){initNavTree('scale__adaptor_8c_source.html',''); in
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../include/scale_adaptor.h&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="scale__adaptor_8h.html#af6d5bf98ab913e1caae7e9c882ab3919">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scale__adaptor_8c.html#af6d5bf98ab913e1caae7e9c882ab3919">scale_adaptor_init</a>(</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="scale__adaptor_8h.html#a420c0667ce2e6b06fb5a7935c9a4eb72">   27</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale__adaptor_8c.html#a420c0667ce2e6b06fb5a7935c9a4eb72">scale_adaptor_init</a>(</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="structscale__adaptor.html">scale_adaptor_t</a>* <span class="keyword">const</span> sa,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span>* data) {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        assert(sa != NULL);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        sa-&gt;<a class="code" href="structscale__adaptor.html#af14c655547d28ae7a361523d88a19cce">_data</a> = data;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">   34</a></span>&#160;<span class="keywordtype">void</span>* <a class="code" href="scale__adaptor_8c.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structscale__adaptor.html">scale_adaptor_t</a>* <span class="keyword">const</span> sa) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        assert(sa != NULL);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> sa-&gt;<a class="code" href="structscale__adaptor.html#af14c655547d28ae7a361523d88a19cce">_data</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="ttc" id="ascale__adaptor_8c_html_a185569d43c2a3ee7ace913ebe432fb55"><div class="ttname"><a href="scale__adaptor_8c.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a></div><div class="ttdeci">void * scale_adaptor_get_data(scale_adaptor_t *const sa)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00034">scale_adaptor.c:34</a></div></div>
-<div class="ttc" id="ascale__adaptor_8c_html_af6d5bf98ab913e1caae7e9c882ab3919"><div class="ttname"><a href="scale__adaptor_8c.html#af6d5bf98ab913e1caae7e9c882ab3919">scale_adaptor_init</a></div><div class="ttdeci">void scale_adaptor_init(scale_adaptor_t *const sa, void *data)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00027">scale_adaptor.c:27</a></div></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">   35</a></span>&#160;<span class="keywordtype">void</span>* <a class="code" href="scale__adaptor_8c.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="structscale__adaptor.html">scale_adaptor_t</a>* <span class="keyword">const</span> sa) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        assert(sa != NULL);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> sa-&gt;<a class="code" href="structscale__adaptor.html#af14c655547d28ae7a361523d88a19cce">_data</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="ttc" id="ascale__adaptor_8c_html_a185569d43c2a3ee7ace913ebe432fb55"><div class="ttname"><a href="scale__adaptor_8c.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a></div><div class="ttdeci">void * scale_adaptor_get_data(scale_adaptor_t *const sa)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00035">scale_adaptor.c:35</a></div></div>
+<div class="ttc" id="ascale__adaptor_8c_html_a420c0667ce2e6b06fb5a7935c9a4eb72"><div class="ttname"><a href="scale__adaptor_8c.html#a420c0667ce2e6b06fb5a7935c9a4eb72">scale_adaptor_init</a></div><div class="ttdeci">bool scale_adaptor_init(scale_adaptor_t *const sa, void *data)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00027">scale_adaptor.c:27</a></div></div>
 <div class="ttc" id="astructscale__adaptor_html"><div class="ttname"><a href="structscale__adaptor.html">scale_adaptor</a></div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8h_source.html#l00034">scale_adaptor.h:34</a></div></div>
 <div class="ttc" id="astructscale__adaptor_html_af14c655547d28ae7a361523d88a19cce"><div class="ttname"><a href="structscale__adaptor.html#af14c655547d28ae7a361523d88a19cce">scale_adaptor::_data</a></div><div class="ttdeci">void * _data</div><div class="ttdoc">Arbitrary user data.</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8h_source.html#l00039">scale_adaptor.h:39</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -133,7 +134,7 @@ $(document).ready(function(){initNavTree('scale__adaptor_8c_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="scale__adaptor_8c.html">scale_adaptor.c</a></li>
-    <li class="footer">Generated on Wed May 24 2023 12:58:37 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 29 2023 12:36:56 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

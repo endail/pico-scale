@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['hx711_5fscale_5fadaptor_2ec_7',['hx711_scale_adaptor.c',['../hx711__scale__adaptor_8c.html',1,'']]],
-  ['hx711_5fscale_5fadaptor_2eh_8',['hx711_scale_adaptor.h',['../hx711__scale__adaptor_8h.html',1,'']]],
-  ['hx711_5fscale_5fadaptor_5fget_5fbase_9',['hx711_scale_adaptor_get_base',['../hx711__scale__adaptor_8h.html#a73b1806b225fcaa1cd9e31a3f375db89',1,'hx711_scale_adaptor_get_base(hx711_scale_adaptor_t *const hxa):&#160;hx711_scale_adaptor.c'],['../hx711__scale__adaptor_8c.html#a73b1806b225fcaa1cd9e31a3f375db89',1,'hx711_scale_adaptor_get_base(hx711_scale_adaptor_t *const hxa):&#160;hx711_scale_adaptor.c']]],
-  ['hx711_5fscale_5fadaptor_5fget_5fvalue_10',['hx711_scale_adaptor_get_value',['../hx711__scale__adaptor_8h.html#a03c8273f4adf2772b5febc6bdc4758d3',1,'hx711_scale_adaptor_get_value(scale_adaptor_t *const sa, int32_t *const value):&#160;hx711_scale_adaptor.c'],['../hx711__scale__adaptor_8c.html#a03c8273f4adf2772b5febc6bdc4758d3',1,'hx711_scale_adaptor_get_value(scale_adaptor_t *const sa, int32_t *const value):&#160;hx711_scale_adaptor.c']]],
-  ['hx711_5fscale_5fadaptor_5fget_5fvalue_5ftimeout_11',['hx711_scale_adaptor_get_value_timeout',['../hx711__scale__adaptor_8h.html#a61edf0259a78a75a7a9af60a3d770352',1,'hx711_scale_adaptor_get_value_timeout(scale_adaptor_t *const sa, int32_t *const value, const uint timeout):&#160;hx711_scale_adaptor.c'],['../hx711__scale__adaptor_8c.html#a61edf0259a78a75a7a9af60a3d770352',1,'hx711_scale_adaptor_get_value_timeout(scale_adaptor_t *const sa, int32_t *const value, const uint timeout):&#160;hx711_scale_adaptor.c']]],
-  ['hx711_5fscale_5fadaptor_5finit_12',['hx711_scale_adaptor_init',['../hx711__scale__adaptor_8h.html#a8150c2dac5d137fecdebba4d1cf474c6',1,'hx711_scale_adaptor_init(hx711_scale_adaptor_t *const hxa, hx711_t *const hx):&#160;hx711_scale_adaptor.c'],['../hx711__scale__adaptor_8c.html#a8150c2dac5d137fecdebba4d1cf474c6',1,'hx711_scale_adaptor_init(hx711_scale_adaptor_t *const hxa, hx711_t *const hx):&#160;hx711_scale_adaptor.c']]],
-  ['hx711_5fscale_5fadaptor_5ft_13',['hx711_scale_adaptor_t',['../structhx711__scale__adaptor__t.html',1,'']]]
+  ['get_5fvalue_6',['get_value',['../structscale__adaptor.html#a16eac6449ca8a97ab038991cc9b92d8c',1,'scale_adaptor']]],
+  ['get_5fvalue_5ftimeout_7',['get_value_timeout',['../structscale__adaptor.html#ac630f7fc5ef6f81174db427e8701805f',1,'scale_adaptor']]]
 ];

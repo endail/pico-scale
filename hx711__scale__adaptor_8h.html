@@ -103,8 +103,8 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8150c2dac5d137fecdebba4d1cf474c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hx711__scale__adaptor_8h.html#a8150c2dac5d137fecdebba4d1cf474c6">hx711_scale_adaptor_init</a> (<a class="el" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a> *const hxa, hx711_t *const hx)</td></tr>
-<tr class="separator:a8150c2dac5d137fecdebba4d1cf474c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea30da9290a0f2834fad833d54eca2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hx711__scale__adaptor_8h.html#a7ea30da9290a0f2834fad833d54eca2d">hx711_scale_adaptor_init</a> (<a class="el" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a> *const hxa, hx711_t *const hx)</td></tr>
+<tr class="separator:a7ea30da9290a0f2834fad833d54eca2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73b1806b225fcaa1cd9e31a3f375db89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="scale__adaptor_8h.html#a71c384a07c57bd2d6995ee092b3d06da">scale_adaptor_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hx711__scale__adaptor_8h.html#a73b1806b225fcaa1cd9e31a3f375db89">hx711_scale_adaptor_get_base</a> (<a class="el" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a> *const hxa)</td></tr>
 <tr class="separator:a73b1806b225fcaa1cd9e31a3f375db89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61edf0259a78a75a7a9af60a3d770352"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hx711__scale__adaptor_8h.html#a61edf0259a78a75a7a9af60a3d770352">hx711_scale_adaptor_get_value_timeout</a> (<a class="el" href="scale__adaptor_8h.html#a71c384a07c57bd2d6995ee092b3d06da">scale_adaptor_t</a> *const sa, int32_t *const value, const uint timeout)</td></tr>
@@ -129,11 +129,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00045">45</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                      {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        assert(hxa != NULL);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> &amp;hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00047">47</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                      {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        assert(hxa != NULL);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> &amp;hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="ttc" id="astructhx711__scale__adaptor__t_html_a6abbaa01be13488ef89b259cf9659cc6"><div class="ttname"><a href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">hx711_scale_adaptor_t::_sa</a></div><div class="ttdeci">scale_adaptor_t _sa</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8h_source.html#l00038">hx711_scale_adaptor.h:38</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00038">hx711_scale_adaptor_t::_sa</a>.</p>
@@ -166,23 +166,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00064">64</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                          {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        assert(sa != NULL);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        assert(value != NULL);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a>* <span class="keyword">const</span> hxa = <a class="code" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(sa);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        *value = hx711_get_value(hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">_hx</a>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00066">66</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                          {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        assert(sa != NULL);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        assert(value != NULL);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a>* <span class="keyword">const</span> hxa = <a class="code" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(sa);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        *value = hx711_get_value(hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">_hx</a>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
-<div class="ttc" id="ascale__adaptor_8h_html_a185569d43c2a3ee7ace913ebe432fb55"><div class="ttname"><a href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a></div><div class="ttdeci">void * scale_adaptor_get_data(scale_adaptor_t *const sa)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00034">scale_adaptor.c:34</a></div></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="ascale__adaptor_8h_html_a185569d43c2a3ee7ace913ebe432fb55"><div class="ttname"><a href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a></div><div class="ttdeci">void * scale_adaptor_get_data(scale_adaptor_t *const sa)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00035">scale_adaptor.c:35</a></div></div>
 <div class="ttc" id="astructhx711__scale__adaptor__t_html"><div class="ttname"><a href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a></div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8h_source.html#l00036">hx711_scale_adaptor.h:36</a></div></div>
 <div class="ttc" id="astructhx711__scale__adaptor__t_html_a7f14d87e2c30993e88d0aafbf4573562"><div class="ttname"><a href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">hx711_scale_adaptor_t::_hx</a></div><div class="ttdeci">hx711_t * _hx</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor.h:37</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00034">scale_adaptor_get_data()</a>.</p>
+<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00035">scale_adaptor_get_data()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="hx711__scale__adaptor_8c_source.html#l00030">hx711_scale_adaptor_init()</a>.</p>
 
@@ -220,31 +220,31 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00051">51</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        assert(sa != NULL);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        assert(value != NULL);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a>* <span class="keyword">const</span> hxa = <a class="code" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(sa);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> hx711_get_value_timeout(hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">_hx</a>, value, timeout);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="hx711__scale__adaptor_8c_source.html#l00053">53</a> of file <a class="el" href="hx711__scale__adaptor_8c_source.html">hx711_scale_adaptor.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        assert(sa != NULL);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        assert(value != NULL);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a>* <span class="keyword">const</span> hxa = <a class="code" href="scale__adaptor_8h.html#a185569d43c2a3ee7ace913ebe432fb55">scale_adaptor_get_data</a>(sa);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> hx711_get_value_timeout(hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">_hx</a>, value, timeout);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00034">scale_adaptor_get_data()</a>.</p>
+<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00035">scale_adaptor_get_data()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="hx711__scale__adaptor_8c_source.html#l00030">hx711_scale_adaptor_init()</a>.</p>
 
 </div>
 </div>
-<a id="a8150c2dac5d137fecdebba4d1cf474c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8150c2dac5d137fecdebba4d1cf474c6">&#9670;&nbsp;</a></span>hx711_scale_adaptor_init()</h2>
+<a id="a7ea30da9290a0f2834fad833d54eca2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea30da9290a0f2834fad833d54eca2d">&#9670;&nbsp;</a></span>hx711_scale_adaptor_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void hx711_scale_adaptor_init </td>
+          <td class="memname">bool hx711_scale_adaptor_init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structhx711__scale__adaptor__t.html">hx711_scale_adaptor_t</a> *const&#160;</td>
           <td class="paramname"><em>hxa</em>, </td>
@@ -271,18 +271,20 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a7f14d87e2c30993e88d0aafbf4573562">_hx</a> = hx;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="scale__adaptor_8h.html#af6d5bf98ab913e1caae7e9c882ab3919">scale_adaptor_init</a>(&amp;hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>, hxa);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="scale__adaptor_8h.html#a420c0667ce2e6b06fb5a7935c9a4eb72">scale_adaptor_init</a>(&amp;hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>, hxa);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>.<a class="code" href="structscale__adaptor.html#a16eac6449ca8a97ab038991cc9b92d8c">get_value</a> = <a class="code" href="hx711__scale__adaptor_8c.html#a03c8273f4adf2772b5febc6bdc4758d3">hx711_scale_adaptor_get_value</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        hxa-&gt;<a class="code" href="structhx711__scale__adaptor__t.html#a6abbaa01be13488ef89b259cf9659cc6">_sa</a>.<a class="code" href="structscale__adaptor.html#ac630f7fc5ef6f81174db427e8701805f">get_value_timeout</a> = <a class="code" href="hx711__scale__adaptor_8c.html#a61edf0259a78a75a7a9af60a3d770352">hx711_scale_adaptor_get_value_timeout</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="ttc" id="ahx711__scale__adaptor_8c_html_a03c8273f4adf2772b5febc6bdc4758d3"><div class="ttname"><a href="hx711__scale__adaptor_8c.html#a03c8273f4adf2772b5febc6bdc4758d3">hx711_scale_adaptor_get_value</a></div><div class="ttdeci">bool hx711_scale_adaptor_get_value(scale_adaptor_t *const sa, int32_t *const value)</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8c_source.html#l00064">hx711_scale_adaptor.c:64</a></div></div>
-<div class="ttc" id="ahx711__scale__adaptor_8c_html_a61edf0259a78a75a7a9af60a3d770352"><div class="ttname"><a href="hx711__scale__adaptor_8c.html#a61edf0259a78a75a7a9af60a3d770352">hx711_scale_adaptor_get_value_timeout</a></div><div class="ttdeci">bool hx711_scale_adaptor_get_value_timeout(scale_adaptor_t *const sa, int32_t *const value, const uint timeout)</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8c_source.html#l00051">hx711_scale_adaptor.c:51</a></div></div>
-<div class="ttc" id="ascale__adaptor_8h_html_af6d5bf98ab913e1caae7e9c882ab3919"><div class="ttname"><a href="scale__adaptor_8h.html#af6d5bf98ab913e1caae7e9c882ab3919">scale_adaptor_init</a></div><div class="ttdeci">void scale_adaptor_init(scale_adaptor_t *const sa, void *data)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00027">scale_adaptor.c:27</a></div></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="ahx711__scale__adaptor_8c_html_a03c8273f4adf2772b5febc6bdc4758d3"><div class="ttname"><a href="hx711__scale__adaptor_8c.html#a03c8273f4adf2772b5febc6bdc4758d3">hx711_scale_adaptor_get_value</a></div><div class="ttdeci">bool hx711_scale_adaptor_get_value(scale_adaptor_t *const sa, int32_t *const value)</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8c_source.html#l00066">hx711_scale_adaptor.c:66</a></div></div>
+<div class="ttc" id="ahx711__scale__adaptor_8c_html_a61edf0259a78a75a7a9af60a3d770352"><div class="ttname"><a href="hx711__scale__adaptor_8c.html#a61edf0259a78a75a7a9af60a3d770352">hx711_scale_adaptor_get_value_timeout</a></div><div class="ttdeci">bool hx711_scale_adaptor_get_value_timeout(scale_adaptor_t *const sa, int32_t *const value, const uint timeout)</div><div class="ttdef"><b>Definition:</b> <a href="hx711__scale__adaptor_8c_source.html#l00053">hx711_scale_adaptor.c:53</a></div></div>
+<div class="ttc" id="ascale__adaptor_8h_html_a420c0667ce2e6b06fb5a7935c9a4eb72"><div class="ttname"><a href="scale__adaptor_8h.html#a420c0667ce2e6b06fb5a7935c9a4eb72">scale_adaptor_init</a></div><div class="ttdeci">bool scale_adaptor_init(scale_adaptor_t *const sa, void *data)</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8c_source.html#l00027">scale_adaptor.c:27</a></div></div>
 <div class="ttc" id="astructscale__adaptor_html_a16eac6449ca8a97ab038991cc9b92d8c"><div class="ttname"><a href="structscale__adaptor.html#a16eac6449ca8a97ab038991cc9b92d8c">scale_adaptor::get_value</a></div><div class="ttdeci">bool(* get_value)(struct scale_adaptor *const sa, int32_t *const value)</div><div class="ttdoc">Function pointer to function.</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8h_source.html#l00046">scale_adaptor.h:46</a></div></div>
 <div class="ttc" id="astructscale__adaptor_html_ac630f7fc5ef6f81174db427e8701805f"><div class="ttname"><a href="structscale__adaptor.html#ac630f7fc5ef6f81174db427e8701805f">scale_adaptor::get_value_timeout</a></div><div class="ttdeci">bool(* get_value_timeout)(struct scale_adaptor *const sa, int32_t *const value, const uint timeout)</div><div class="ttdoc">Function pointer to function.</div><div class="ttdef"><b>Definition:</b> <a href="scale__adaptor_8h_source.html#l00056">scale_adaptor.h:56</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, <a class="el" href="hx711__scale__adaptor_8h_source.html#l00038">hx711_scale_adaptor_t::_sa</a>, <a class="el" href="scale__adaptor_8h_source.html#l00046">scale_adaptor::get_value</a>, <a class="el" href="scale__adaptor_8h_source.html#l00056">scale_adaptor::get_value_timeout</a>, <a class="el" href="hx711__scale__adaptor_8c_source.html#l00064">hx711_scale_adaptor_get_value()</a>, <a class="el" href="hx711__scale__adaptor_8c_source.html#l00051">hx711_scale_adaptor_get_value_timeout()</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00027">scale_adaptor_init()</a>.</p>
+<p class="reference">References <a class="el" href="hx711__scale__adaptor_8h_source.html#l00037">hx711_scale_adaptor_t::_hx</a>, <a class="el" href="hx711__scale__adaptor_8h_source.html#l00038">hx711_scale_adaptor_t::_sa</a>, <a class="el" href="scale__adaptor_8h_source.html#l00046">scale_adaptor::get_value</a>, <a class="el" href="scale__adaptor_8h_source.html#l00056">scale_adaptor::get_value_timeout</a>, <a class="el" href="hx711__scale__adaptor_8c_source.html#l00066">hx711_scale_adaptor_get_value()</a>, <a class="el" href="hx711__scale__adaptor_8c_source.html#l00053">hx711_scale_adaptor_get_value_timeout()</a>, and <a class="el" href="scale__adaptor_8c_source.html#l00027">scale_adaptor_init()</a>.</p>
 
 </div>
 </div>
@@ -292,7 +294,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="hx711__scale__adaptor_8h.html">hx711_scale_adaptor.h</a></li>
-    <li class="footer">Generated on Wed May 24 2023 12:58:37 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon May 29 2023 12:36:56 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
