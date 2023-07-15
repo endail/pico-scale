@@ -25,7 +25,6 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <pico/printf.h>
 #include "pico/time.h"
 #include "../include/scale.h"
 #include "../include/scale_adaptor.h"
