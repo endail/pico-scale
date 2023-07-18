@@ -207,8 +207,8 @@ $(document).ready(function(){initNavTree('scale_8c_source.html',''); initResizab
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="comment">//update the time diff between the end and now</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            diff = absolute_time_diff_us(end, get_absolute_time());</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="comment">//update the time diff between now and the end</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            diff = absolute_time_diff_us(get_absolute_time(), end);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span>(diff &lt;= 0) {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="comment">//timeout reached</span></div>
@@ -226,126 +226,128 @@ $(document).ready(function(){initNavTree('scale_8c_source.html',''); initResizab
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="comment">/* the last get_value_timeout call might fail because there is little time</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">                   left until the timeout is reached, so fail only if no values were read at all. */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span> *len &gt; 0;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="scale_8h.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">  151</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">double</span>* <span class="keyword">const</span> val,</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        assert(sc != NULL);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        assert(val != NULL);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        assert(opt != NULL);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordtype">size_t</span> len;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>; <span class="comment">//assume error</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">switch</span>(opt-&gt;<a class="code" href="structscale__options__t.html#a3baddb950b0633eb3ad9fc9361777eba">strat</a>) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a4e85561d4c7c106c52380fa474788662ad8c5b94448e44f7b095f5b5d8ead5bce">strategy_type_time</a>:</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                ok = <a class="code" href="scale_8c.html#aed7a1454cc2e606d788eccd9ab8e1b9c">scale_get_values_timeout</a>(</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    sc,</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>,</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a9bf9f39bbba2ac5ee0f5bfaaad1b63ae">bufflen</a>,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    &amp;len,</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#aba685025ee1a84c96cd691c264f62845">timeout</a>);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a4e85561d4c7c106c52380fa474788662aced884cf0ed874e1fa02fcb446f30aab">strategy_type_samples</a>:</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                assert(opt-&gt;<a class="code" href="structscale__options__t.html#a9bf9f39bbba2ac5ee0f5bfaaad1b63ae">bufflen</a> &gt;= opt-&gt;<a class="code" href="structscale__options__t.html#a63b4af268849d527995864d79dcfdc30">samples</a>);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                len = opt-&gt;<a class="code" href="structscale__options__t.html#a63b4af268849d527995864d79dcfdc30">samples</a>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                ok = <a class="code" href="scale_8c.html#a62b6a104c76503fcdf47b007507a6f70">scale_get_values_samples</a>(</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    sc,</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>,</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    len);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="comment">//exit early if fail</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">if</span>(!ok) {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">switch</span>(opt-&gt;<a class="code" href="structscale__options__t.html#a8340e5ef6a76006234dc4db81b6348d7">read</a>) {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a6ce0c432eb30fb3e4df71c1ca283acf3afd48fa7dbd635cc66d5f989d7ce8af34">read_type_average</a>:</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <a class="code" href="util_8h.html#aa501515573fe126dc152ed300ac529ef">util_average</a>(opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>, len, val);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a6ce0c432eb30fb3e4df71c1ca283acf3abb9a22ec4a92b0738dac707c774dc14f">read_type_median</a>:</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <a class="code" href="util_8h.html#a3af8347b8bd848e2b66cb7cb34d7efd5">util_median</a>(opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>, len, val);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="scale_8h.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">  153</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">double</span>* <span class="keyword">const</span> val,</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        assert(sc != NULL);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        assert(val != NULL);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        assert(opt != NULL);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordtype">size_t</span> len;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>; <span class="comment">//assume error</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">switch</span>(opt-&gt;<a class="code" href="structscale__options__t.html#a3baddb950b0633eb3ad9fc9361777eba">strat</a>) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a4e85561d4c7c106c52380fa474788662ad8c5b94448e44f7b095f5b5d8ead5bce">strategy_type_time</a>:</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                ok = <a class="code" href="scale_8c.html#aed7a1454cc2e606d788eccd9ab8e1b9c">scale_get_values_timeout</a>(</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    sc,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>,</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a9bf9f39bbba2ac5ee0f5bfaaad1b63ae">bufflen</a>,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    &amp;len,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#aba685025ee1a84c96cd691c264f62845">timeout</a>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a4e85561d4c7c106c52380fa474788662aced884cf0ed874e1fa02fcb446f30aab">strategy_type_samples</a>:</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                assert(opt-&gt;<a class="code" href="structscale__options__t.html#a9bf9f39bbba2ac5ee0f5bfaaad1b63ae">bufflen</a> &gt;= opt-&gt;<a class="code" href="structscale__options__t.html#a63b4af268849d527995864d79dcfdc30">samples</a>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                len = opt-&gt;<a class="code" href="structscale__options__t.html#a63b4af268849d527995864d79dcfdc30">samples</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                ok = <a class="code" href="scale_8c.html#a62b6a104c76503fcdf47b007507a6f70">scale_get_values_samples</a>(</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    sc,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    len);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">//exit early if fail</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">if</span>(!ok) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">switch</span>(opt-&gt;<a class="code" href="structscale__options__t.html#a8340e5ef6a76006234dc4db81b6348d7">read</a>) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a6ce0c432eb30fb3e4df71c1ca283acf3afd48fa7dbd635cc66d5f989d7ce8af34">read_type_average</a>:</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="util_8h.html#aa501515573fe126dc152ed300ac529ef">util_average</a>(opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>, len, val);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="scale_8h.html#a6ce0c432eb30fb3e4df71c1ca283acf3abb9a22ec4a92b0738dac707c774dc14f">read_type_median</a>:</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <a class="code" href="util_8h.html#a3af8347b8bd848e2b66cb7cb34d7efd5">util_median</a>(opt-&gt;<a class="code" href="structscale__options__t.html#a0aa4a25f99873e5c6799321a5d842cc6">buffer</a>, len, val);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">  204</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a>(</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        assert(sc != NULL);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        assert(opt != NULL);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordtype">double</span> val;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keyword">const</span> int32_t refBackup = sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a>;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a> = 1;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="scale_8h.html#a2856aa7de7bc3367436768b16c7635d2">  206</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a>(</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        assert(sc != NULL);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        assert(opt != NULL);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordtype">double</span> val;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keyword">const</span> int32_t refBackup = sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">if</span>((ok = <a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(sc, &amp;val, opt))) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="comment">//only change the offset if the read</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="comment">//succeeded</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            sc-&gt;<a class="code" href="structscale__t.html#ad745624cc3dc584a6acc409ef4697e12">offset</a> = (int32_t)round(val);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a> = refBackup;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a> = 1;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">if</span>((ok = <a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(sc, &amp;val, opt))) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="comment">//only change the offset if the read</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="comment">//succeeded</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            sc-&gt;<a class="code" href="structscale__t.html#ad745624cc3dc584a6acc409ef4697e12">offset</a> = (int32_t)round(val);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">return</span> ok;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        sc-&gt;<a class="code" href="structscale__t.html#a8eb5159baefd06abe5738716041d674e">ref_unit</a> = refBackup;</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">return</span> ok;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="scale_8h.html#a3e40634ba10306170af7c5efd6763731">  229</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a>(</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="structmass__t.html">mass_t</a>* <span class="keyword">const</span> m,</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        assert(sc != NULL);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        assert(m != NULL);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        assert(opt != NULL);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordtype">double</span> val;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="scale_8h.html#a3e40634ba10306170af7c5efd6763731">  231</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="scale_8c.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a>(</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="structscale__t.html">scale_t</a>* <span class="keyword">const</span> sc,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <a class="code" href="structmass__t.html">mass_t</a>* <span class="keyword">const</span> m,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keyword">const</span> <a class="code" href="structscale__options__t.html">scale_options_t</a>* <span class="keyword">const</span> opt) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        assert(sc != NULL);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        assert(m != NULL);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        assert(opt != NULL);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="comment">//if the read fails, return false</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(sc, &amp;val, opt)) {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="comment">//if normalising the value fails, return false</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="scale_8c.html#ad36a1aada9051db90926f7092df307fd">scale_normalise</a>(sc, &amp;val, &amp;val)) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <a class="code" href="mass_8h.html#a920adcefe77cc1984ff48c7cc19c2932">mass_init</a>(m, sc-&gt;<a class="code" href="structscale__t.html#aac67f2643900b076bd2d3c952c4af18b">unit</a>, val);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordtype">double</span> val;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <span class="comment">//if the read fails, return false</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a>(sc, &amp;val, opt)) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="comment">//if normalising the value fails, return false</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="scale_8c.html#ad36a1aada9051db90926f7092df307fd">scale_normalise</a>(sc, &amp;val, &amp;val)) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="mass_8h.html#a920adcefe77cc1984ff48c7cc19c2932">mass_init</a>(m, sc-&gt;<a class="code" href="structscale__t.html#aac67f2643900b076bd2d3c952c4af18b">unit</a>, val);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
 <div class="ttc" id="amass_8h_html_a63594d9cf123405a03d0ab838daa9a27"><div class="ttname"><a href="mass_8h.html#a63594d9cf123405a03d0ab838daa9a27">mass_unit_t</a></div><div class="ttdeci">mass_unit_t</div><div class="ttdef"><b>Definition:</b> <a href="mass_8h_source.html#l00064">mass.h:64</a></div></div>
 <div class="ttc" id="amass_8h_html_a920adcefe77cc1984ff48c7cc19c2932"><div class="ttname"><a href="mass_8h.html#a920adcefe77cc1984ff48c7cc19c2932">mass_init</a></div><div class="ttdeci">void mass_init(mass_t *const m, const mass_unit_t unit, const double val)</div><div class="ttdoc">Initialises a mass_t with the given unit and value.</div><div class="ttdef"><b>Definition:</b> <a href="mass_8c_source.html#l00064">mass.c:64</a></div></div>
-<div class="ttc" id="ascale_8c_html_a2856aa7de7bc3367436768b16c7635d2"><div class="ttname"><a href="scale_8c.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a></div><div class="ttdeci">bool scale_zero(scale_t *const sc, const scale_options_t *const opt)</div><div class="ttdoc">Zeros the scale (tare) by adjusting its offset from 0 according to the given options....</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00204">scale.c:204</a></div></div>
-<div class="ttc" id="ascale_8c_html_a3e40634ba10306170af7c5efd6763731"><div class="ttname"><a href="scale_8c.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a></div><div class="ttdeci">bool scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a weight from the scale according to the given options. Returns true if the operation succeed...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00229">scale.c:229</a></div></div>
+<div class="ttc" id="ascale_8c_html_a2856aa7de7bc3367436768b16c7635d2"><div class="ttname"><a href="scale_8c.html#a2856aa7de7bc3367436768b16c7635d2">scale_zero</a></div><div class="ttdeci">bool scale_zero(scale_t *const sc, const scale_options_t *const opt)</div><div class="ttdoc">Zeros the scale (tare) by adjusting its offset from 0 according to the given options....</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00206">scale.c:206</a></div></div>
+<div class="ttc" id="ascale_8c_html_a3e40634ba10306170af7c5efd6763731"><div class="ttname"><a href="scale_8c.html#a3e40634ba10306170af7c5efd6763731">scale_weight</a></div><div class="ttdeci">bool scale_weight(scale_t *const sc, mass_t *const m, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a weight from the scale according to the given options. Returns true if the operation succeed...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00231">scale.c:231</a></div></div>
 <div class="ttc" id="ascale_8c_html_a62b6a104c76503fcdf47b007507a6f70"><div class="ttname"><a href="scale_8c.html#a62b6a104c76503fcdf47b007507a6f70">scale_get_values_samples</a></div><div class="ttdeci">bool scale_get_values_samples(scale_t *const sc, int32_t *const arr, const size_t len)</div><div class="ttdoc">Fills arr with len number of samples from the scale. Returns true if the operation succeeded.</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00076">scale.c:76</a></div></div>
 <div class="ttc" id="ascale_8c_html_a8f28c6ebe9fa5bd24f48c9003502f13e"><div class="ttname"><a href="scale_8c.html#a8f28c6ebe9fa5bd24f48c9003502f13e">scale_options_get_default</a></div><div class="ttdeci">void scale_options_get_default(scale_options_t *const opt)</div><div class="ttdoc">Fill options will default values.</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00033">scale.c:33</a></div></div>
-<div class="ttc" id="ascale_8c_html_aa577f7c9ec1599e3ab7e2fcd9cfc65e1"><div class="ttname"><a href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a></div><div class="ttdeci">bool scale_read(scale_t *const sc, double *const val, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a value from the scale according to the given options. Returns true if the operation succeede...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00151">scale.c:151</a></div></div>
+<div class="ttc" id="ascale_8c_html_aa577f7c9ec1599e3ab7e2fcd9cfc65e1"><div class="ttname"><a href="scale_8c.html#aa577f7c9ec1599e3ab7e2fcd9cfc65e1">scale_read</a></div><div class="ttdeci">bool scale_read(scale_t *const sc, double *const val, const scale_options_t *const opt)</div><div class="ttdoc">Obtains a value from the scale according to the given options. Returns true if the operation succeede...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00153">scale.c:153</a></div></div>
 <div class="ttc" id="ascale_8c_html_abb8d809b207914282a53c53099c74d37"><div class="ttname"><a href="scale_8c.html#abb8d809b207914282a53c53099c74d37">scale_init</a></div><div class="ttdeci">void scale_init(scale_t *const sc, scale_adaptor_t *const adaptor, const mass_unit_t unit, const int32_t ref_unit, const int32_t offset)</div><div class="ttdoc">Initialise the scale with a hx711_t.</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00039">scale.c:39</a></div></div>
 <div class="ttc" id="ascale_8c_html_ad36a1aada9051db90926f7092df307fd"><div class="ttname"><a href="scale_8c.html#ad36a1aada9051db90926f7092df307fd">scale_normalise</a></div><div class="ttdeci">bool scale_normalise(const scale_t *const sc, const double *const raw, double *const normalised)</div><div class="ttdoc">Adjusts a raw value to a normalised value according to the scale's reference unit and offset....</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00057">scale.c:57</a></div></div>
 <div class="ttc" id="ascale_8c_html_aed7a1454cc2e606d788eccd9ab8e1b9c"><div class="ttname"><a href="scale_8c.html#aed7a1454cc2e606d788eccd9ab8e1b9c">scale_get_values_timeout</a></div><div class="ttdeci">bool scale_get_values_timeout(scale_t *const sc, int32_t *const arr, const size_t arrlen, size_t *const len, const uint timeout)</div><div class="ttdoc">Fills arr with as many number of samples as possible up to the timeout. Returns true if the operation...</div><div class="ttdef"><b>Definition:</b> <a href="scale_8c_source.html#l00095">scale.c:95</a></div></div>
@@ -378,7 +380,7 @@ $(document).ready(function(){initNavTree('scale_8c_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="scale_8c.html">scale.c</a></li>
-    <li class="footer">Generated on Mon May 29 2023 13:10:59 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 18 2023 11:50:10 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

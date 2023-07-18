@@ -131,19 +131,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8c_source.html#l00075">75</a> of file <a class="el" href="util_8c_source.html">util.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                   {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        assert(a != NULL);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        assert(b != NULL);</div>
+<p class="definition">Definition at line <a class="el" href="util_8c_source.html#l00078">78</a> of file <a class="el" href="util_8c_source.html">util.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                   {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pA = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)a;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pB = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)b;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">//https://stackoverflow.com/a/10996555/570787</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> (*pA &lt; *pB) ? -1 : (*pA &gt; *pB);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        assert(a != NULL);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        assert(b != NULL);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pA = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)a;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pB = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)b;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">//https://stackoverflow.com/a/10996555/570787</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> (*pA &lt; *pB) ? -1 : (*pA &gt; *pB);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="util_8c_source.html#l00046">util_median()</a>.</p>
 
@@ -208,7 +208,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="scale_8c_source.html#l00151">scale_read()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scale_8c_source.html#l00153">scale_read()</a>.</p>
 
 </div>
 </div>
@@ -268,19 +268,22 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">sizeof</span>(int32_t),</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span>(len % 2 == 0) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (len % 2 == 0) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            *med = (arr[(len / 2) - 1] + arr[len / 2]) / 2.0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len &gt; 1) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *med = (double)arr[(len / 2) + 1];</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="ttc" id="autil_8c_html_af117751d55045a84b893bc8bca3f665a"><div class="ttname"><a href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a></div><div class="ttdeci">int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00075">util.c:75</a></div></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            *med = (double)arr[0];</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="ttc" id="autil_8c_html_af117751d55045a84b893bc8bca3f665a"><div class="ttname"><a href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a></div><div class="ttdeci">int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00078">util.c:78</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="util_8c_source.html#l00075">util__median_compare_func()</a>.</p>
+<p class="reference">References <a class="el" href="util_8c_source.html#l00078">util__median_compare_func()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="scale_8c_source.html#l00151">scale_read()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="scale_8c_source.html#l00153">scale_read()</a>.</p>
 
 </div>
 </div>
@@ -290,7 +293,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="util_8c.html">util.c</a></li>
-    <li class="footer">Generated on Mon May 29 2023 13:10:59 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 18 2023 11:50:10 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -145,39 +145,42 @@ $(document).ready(function(){initNavTree('util_8c_source.html',''); initResizabl
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">sizeof</span>(int32_t),</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span>(len % 2 == 0) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (len % 2 == 0) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            *med = (arr[(len / 2) - 1] + arr[len / 2]) / 2.0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (len &gt; 1) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *med = (double)arr[(len / 2) + 1];</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="util_8h.html#af117751d55045a84b893bc8bca3f665a">   75</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a>(</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">void</span>* a,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">void</span>* b) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        assert(a != NULL);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        assert(b != NULL);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            *med = (double)arr[0];</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="util_8h.html#af117751d55045a84b893bc8bca3f665a">   78</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a>(</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">void</span>* a,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">void</span>* b) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pA = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)a;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pB = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)b;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">//https://stackoverflow.com/a/10996555/570787</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> (*pA &lt; *pB) ? -1 : (*pA &gt; *pB);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        assert(a != NULL);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        assert(b != NULL);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pA = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)a;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">const</span> int32_t* restrict <span class="keyword">const</span> pB = (<span class="keyword">const</span> int32_t* <span class="keyword">const</span>)b;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">//https://stackoverflow.com/a/10996555/570787</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> (*pA &lt; *pB) ? -1 : (*pA &gt; *pB);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 <div class="ttc" id="autil_8c_html_a3af8347b8bd848e2b66cb7cb34d7efd5"><div class="ttname"><a href="util_8c.html#a3af8347b8bd848e2b66cb7cb34d7efd5">util_median</a></div><div class="ttdeci">void util_median(int32_t *const arr, const size_t len, double *const med)</div><div class="ttdoc">Calculates the median value from an array of signed 32-bit integers.</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00046">util.c:46</a></div></div>
 <div class="ttc" id="autil_8c_html_aa501515573fe126dc152ed300ac529ef"><div class="ttname"><a href="util_8c.html#aa501515573fe126dc152ed300ac529ef">util_average</a></div><div class="ttdeci">void util_average(const int32_t *const arr, const size_t len, double *const avg)</div><div class="ttdoc">Calculates the average value from an array of signed 32-bit integers.</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00027">util.c:27</a></div></div>
-<div class="ttc" id="autil_8c_html_af117751d55045a84b893bc8bca3f665a"><div class="ttname"><a href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a></div><div class="ttdeci">int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00075">util.c:75</a></div></div>
+<div class="ttc" id="autil_8c_html_af117751d55045a84b893bc8bca3f665a"><div class="ttname"><a href="util_8c.html#af117751d55045a84b893bc8bca3f665a">util__median_compare_func</a></div><div class="ttdeci">int util__median_compare_func(const void *a, const void *b)</div><div class="ttdef"><b>Definition:</b> <a href="util_8c_source.html#l00078">util.c:78</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="util_8c.html">util.c</a></li>
-    <li class="footer">Generated on Mon May 29 2023 13:10:59 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Tue Jul 18 2023 11:50:10 for pico-scale by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
