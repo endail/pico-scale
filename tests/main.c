@@ -36,12 +36,12 @@ int main(void) {
     const int32_t offset = -367539;
 
     //1. declare relevant variables
-    hx711_t hx;
-    hx711_config_t hxcfg;
-    hx711_scale_adaptor_t hxsa;
+    hx711_t hx = {0};
+    hx711_config_t hxcfg = {0};
+    hx711_scale_adaptor_t hxsa = {0};
 
-    scale_t sc;
-    scale_options_t opt;
+    scale_t sc = {0};
+    scale_options_t opt = {0};
     scale_options_get_default(&opt);
 
     //2. provide a read buffer for the scale

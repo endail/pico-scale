@@ -63,11 +63,14 @@ void util_median(
          * the average of the middle two elements. Otherwise
          * it is the middle element.
          */
-        if(len % 2 == 0) {
+        if (len % 2 == 0) {
             *med = (arr[(len / 2) - 1] + arr[len / 2]) / 2.0;
         }
-        else {
+        else if (len > 1) {
             *med = (double)arr[(len / 2) + 1];
+        }
+        else {
+            *med = (double)arr[0];
         }
 
 }

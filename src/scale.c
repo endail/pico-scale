@@ -120,8 +120,8 @@ bool scale_get_values_timeout(
                 break;
             }
 
-            //update the time diff between the end and now
-            diff = absolute_time_diff_us(end, get_absolute_time());
+            //update the time diff between now and the end
+            diff = absolute_time_diff_us(get_absolute_time(), end);
 
             if(diff <= 0) {
                 //timeout reached
@@ -139,12 +139,14 @@ bool scale_get_values_timeout(
 
             }
             else {
-                return false;
+                /* the last get_value_timeout call might fail because there is little time
+                   left until the timeout is reached, so fail only if no values were read at all. */
+                break;
             }
 
         }
 
-        return true;
+        return *len > 0;
 
 }
 
